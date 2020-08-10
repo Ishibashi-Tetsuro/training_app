@@ -1,6 +1,6 @@
 class DiariesController < ApplicationController
   def index
-    @diariys = Diary.all
+    @diaries = Diary.all
   end
 
   def show
