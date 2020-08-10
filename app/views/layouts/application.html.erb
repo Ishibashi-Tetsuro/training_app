@@ -18,7 +18,7 @@
         <ul class="lists">
           <% if user_signed_in? %>
             <li><%= link_to "エクササイズ", exercise_path(current_user.id), class: "list" %></li>
-            <li><%= link_to "日記記録", "#", class: "list" %></li>
+            <li><%= link_to "日記一覧", diaries_path, class: "list" %></li>
             <li><%= link_to "スケジュール", "#", class: "list" %></li>
             <li><%= link_to "マイページ", "#", class: "list" %></li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "list list-border" %></li>

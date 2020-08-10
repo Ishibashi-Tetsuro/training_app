@@ -1,0 +1,4 @@
+<h1>日記一覧</h1>
+<% @diaries.each do |diary| %>
+  <%= link_to diary.content, diary_path(diary.id) %>
+<% end %>
