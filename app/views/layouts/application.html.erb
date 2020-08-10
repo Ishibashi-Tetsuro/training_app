@@ -12,6 +12,23 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="wrapper">
+      <div class="header">
+        <p ><%= link_to "LAVA", root_path, class: "header-logo" %></p>
+        <ul class="lists">
+          <% if user_signed_in? %>
+            <li ><%= link_to "エクササイズ", "#", class: "list" %></li>
+            <li ><%= link_to "日記記録", "#", class: "list" %></li>
+            <li ><%= link_to "スケジュール", "#", class: "list" %></li>
+            <li ><%= link_to "マイページ", "#", class: "list" %></li>
+            <li ><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "list list-border" %></li>
+          <% else %>
+            <li ><%= link_to "新規登録", new_user_registration_path, class: "list" %></li>
+            <li ><%= link_to "ログイン", new_user_session_path, class: "list list-border" %></li>
+          <% end %>
+        </ul>
+      </div>
+      <%= yield %>
+    </div>
   </body>
 </html>
