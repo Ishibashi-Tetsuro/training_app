@@ -13,3 +13,33 @@
  *= require_tree .
  *= require_self
  */
+@import "reset";
+
+.header {
+  display: flex;
+  padding: 20px 0 20px 20px;
+}
+
+.header-logo {
+  padding-right: 20px;
+  font-size: 30px;
+  text-decoration: none;
+  color: #433f3f;
+}
+
+.lists {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.list {
+  padding: 1px 20px;
+  border-right: 1px solid black;
+  text-decoration: none;
+  color: #433f3f;
+}
+
+.list-border {
+  border: none;
+}
