@@ -1,35 +1,37 @@
-<%= form_for(@schedule, url: schedules_path, method: :post) do |f| %>
-  <label class="control-label" for=""><p>エクササイズ</p></label>
-  <%= f.text_field :exercise, class: 'form-control' %>
-
-  <label class="control-label" for=""><p>実施予定日</p></label>
-  <%= raw sprintf(
-    f.date_select(
-        :training_date,
-        {
-          :discard_year => true,
-          default: Date.today + 7.day,
-          date_separator: '%s',
-          datetime_separator: '%s',
-        },
-        {class: 'form-control' }
-        ),
-        '月') + '日'
-    %>
-
-    <%= raw sprintf(
-    f.date_select(
-        :training_date,
-        {
-          :discard_year => true,
-          default: Date.today + 8.day,
-          date_separator: '%s',
-          datetime_separator: '%s',
-        },
-        {class: 'form-control' }
-        ),
-        '月') + '日'
-    %>
-
-  <%= f.submit '登録', class: 'btn btn-primary' %>
+<%= form_for(@form, url: schedules_path, method: :post) do |fb| %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>エクササイズ</th>
+        <th>実施予定日</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= fb.fields_for :schedules do |f| %>
+        <tr class="item">
+          <td class="text-center">
+          <%= f.text_field :exercise, class: 'form-control' %>
+          </td>
+          <td>
+            <%= raw sprintf(
+              f.date_select(
+                  :training_date,
+                  {
+                    :discard_year => true,
+                    default: Date.today + 7.day,
+                    date_separator: '%s',
+                    datetime_separator: '%s',
+                  },
+                  {class: 'form-control' }
+                  ),
+                  '月') + '日'
+              %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
+    <%= fb.submit '登録', class: 'btn btn-primary' %>
+  </div>
 <% end %>

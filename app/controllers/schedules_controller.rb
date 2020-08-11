@@ -1,11 +1,12 @@
 class SchedulesController < ApplicationController
+
   def new
-    @schedule = Schedule.new
+    @form = Form::ScheduleCollection.new
   end
 
   def create
-    @schedule = Schedule.new(schedule_params)
-    if @schedule.save
+    @form = Form::ScheduleCollection.new(schedule_collection_params)
+    if @form.save
       redirect_to user_path(current_user.id)
     else
       render :new
@@ -14,8 +15,10 @@ class SchedulesController < ApplicationController
 
   private
 
-  def schedule_params
-    params.require(:schedule).permit(:exercise, :training_date)
+  def schedule_collection_params
+    params
+      .require(:form_schedule_collection)
+      .permit(schedules_attributes: Form::Schedule::REGISTRABLE_ATTRIBUTES)
   end
 
 end
