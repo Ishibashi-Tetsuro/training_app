@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'diaries/index'
-  get 'diaries/show'
+  get 'users/show'
   devise_for :users
   resources :exercises
-  resources :diaries
+  resources :diaries, only: [:index, :show]
+  resources :users, only: [:show]
   root "exercises#index"
 end

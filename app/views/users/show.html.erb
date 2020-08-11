@@ -1,0 +1,14 @@
+<div>
+  <h2>ユーザー情報</h2>
+  <p>こんにちは<%= @user.id %>さん</p>
+  <%= @user.email %>
+</div>
+<div>
+  <h2>投稿一覧</h2>
+    <% @diaries.each do |diary| %>
+      <p><%= diary.content %></p>
+    <% end %>
+</div>
+<div>
+  <h2>過去のエクササイズ</h2>
+</div>
