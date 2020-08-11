@@ -1,4 +1,4 @@
-<%= form_for(@schedule, url: {controller: 'schedules', action: 'create'}) do |f| %>
+<%= form_for(@schedule, url: schedules_path, method: :post) do |f| %>
   <label class="control-label" for=""><p>エクササイズ</p></label>
   <%= f.text_field :exercise, class: 'form-control' %>
 
@@ -9,6 +9,20 @@
         {
           :discard_year => true,
           default: Date.today + 7.day,
+          date_separator: '%s',
+          datetime_separator: '%s',
+        },
+        {class: 'form-control' }
+        ),
+        '月') + '日'
+    %>
+
+    <%= raw sprintf(
+    f.date_select(
+        :training_date,
+        {
+          :discard_year => true,
+          default: Date.today + 8.day,
           date_separator: '%s',
           datetime_separator: '%s',
         },
