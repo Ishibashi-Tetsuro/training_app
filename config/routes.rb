@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :exercises
   resources :diaries, only: [:index, :show]
   resources :users, only: [:show]
+  resources :schedules, only: [:new, :create]
   root "exercises#index"
 end
