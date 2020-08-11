@@ -3,7 +3,18 @@
   <%= f.text_field :exercise, class: 'form-control' %>
 
   <label class="control-label" for=""><p>実施予定日</p></label>
-  <%= f.date_select :training_date, {:discard_year => true}, class: 'form-control' %>
+  <%= raw sprintf(
+    f.date_select(
+        :training_date,
+        {
+          :discard_year => true,
+          date_separator: '%s',
+          datetime_separator: '%s',
+        },
+        {class: 'form-control' }
+        ),
+        '月') + '日'
+    %>
 
   <%= f.submit '登録', class: 'btn btn-primary' %>
 <% end %>
