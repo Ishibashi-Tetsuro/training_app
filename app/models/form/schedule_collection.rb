@@ -4,7 +4,7 @@ class Form::ScheduleCollection < Form::Base
 
   def initialize(attributes = {})
     super attributes
-    self.schedules = DEFAULT_ITEM_COUNT.times.map { Schedule.new } unless schedules.present?
+    self.schedules = DEFAULT_ITEM_COUNT.times.map { Form::Schedule.new } unless schedules.present?
   end
 
   def schedules_attributes=(attributes)
