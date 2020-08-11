@@ -1,4 +1,4 @@
-<%= form_for(@form, url: schedules_path, method: :post) do |fb| %>
+<%= form_for(@schedule, url: schedules_path, method: :post) do |fb| %>
   <table class="table">
     <thead>
       <tr>
@@ -18,7 +18,7 @@
                   :training_date,
                   {
                     :discard_year => true,
-                    default: Date.today + 7.day,
+                    default: Date.today + 2.day,
                     date_separator: '%s',
                     datetime_separator: '%s',
                   },

@@ -1,12 +1,12 @@
 class SchedulesController < ApplicationController
 
   def new
-    @form = Form::ScheduleCollection.new
+    @schedule = Form::ScheduleCollection.new
   end
 
   def create
-    @form = Form::ScheduleCollection.new(schedule_collection_params)
-    if @form.save
+    @schedule = Form::ScheduleCollection.new(schedule_collection_params)
+    if @schedule.save
       redirect_to user_path(current_user.id)
     else
       render :new
