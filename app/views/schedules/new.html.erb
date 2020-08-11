@@ -28,6 +28,7 @@
                   ),
                   '月') + '日'
               %>
+              <%= f.text_field :user_id, value: current_user.id, class: 'user_id' %>
           </td>
         </tr>
       <% end %>
