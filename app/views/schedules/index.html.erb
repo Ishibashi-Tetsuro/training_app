@@ -1,0 +1,8 @@
+<h1>スケジュール一覧</h1>
+<%= link_to "新規スケジュール設定", new_schedule_path, class: "" %>
+<% @schedules.each do |schedule| %>
+  <div>
+    <%= schedule.training_date %>
+    <%= schedule.exercise %>
+  </div>
+<% end %>
