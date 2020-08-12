@@ -4,6 +4,7 @@ class ExercisesController < ApplicationController
   end
 
   def show
+    @exercise = Exercise.find(1)
   end
 
 end
