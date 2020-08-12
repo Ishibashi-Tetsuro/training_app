@@ -1,1 +1,11 @@
-<h1>hello excersise</h1>
+<h1>Today Exercise</h1>
+  <% @schedules.each do |schedule| %>
+    <div>
+      Part : <%= schedule.exercise.part %>
+    </div>
+    <div>
+      Level : <%= schedule.exercise.level %>
+    </div>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= schedule.exercise.url %>"
+              frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <% end %>
