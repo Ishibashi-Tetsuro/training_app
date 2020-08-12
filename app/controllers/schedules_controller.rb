@@ -13,6 +13,10 @@ class SchedulesController < ApplicationController
     end
   end
 
+  def index
+    @schedules = Schedule.where(user_id: current_user.id).order(training_date: :asc)
+  end
+
   private
 
   def schedule_collection_params
