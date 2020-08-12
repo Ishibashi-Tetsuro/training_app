@@ -10,7 +10,7 @@ class ExercisesController < ApplicationController
 
   def create
     @exercise = Exercise.new(exercise_params)
-    binding.pry
+    @exercise.url = @exercise.url.last(11)
     if @exercise.save
       redirect_to exercise_path(current_user.id)
     else
