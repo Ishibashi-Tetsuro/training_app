@@ -16,18 +16,4 @@
   </div>
 <% end %>
 
-  エクササイズを新規登録
-  <%= form_with model: @exercise, method: :post do |f| %>
-    <%= f.label :url, "YouTubeのURL" %>
-    <%= f.text_field :url %>
-    <%= f.label :part, "Part" %>
-    <%= f.select :part, ["二の腕", "お腹", "胸", "足"],
-    {include_blank: "---"} %>
-    <%= f.label :level, "Level" %>
-    <%= f.select :level, ["1","2", "3"],
-    {include_blank: "---"} %>
-    <div>
-      <%= f.submit '登録', class: 'btn btn-primary' %>
-    </div>
-  <% end %>
-</div>
+<%= link_to "新規エクササイズ登録はこちらから", new_exercise_path, class: "" %>
