@@ -11,7 +11,7 @@
       <%= fb.fields_for :schedules do |f| %>
         <tr class="item">
           <td class="text-center">
-            <%= f.select :exercise_id, ["1","2", "3"],
+            <%= f.select :part, ["二の腕", "お腹", "胸", "足"]  ,
               {include_blank: "---"} %>
           </td>
           <td>
