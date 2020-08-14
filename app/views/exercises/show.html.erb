@@ -1,27 +1,33 @@
 <h1>Today Exercise</h1>
-  <% @schedules.each do |schedule| %>
-    <div>
-      Part : <%= schedule.exercise.part %>
-    </div>
-    <div>
-      Level : <%= schedule.exercise.level %>
-    </div>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= schedule.exercise.url %>"
-              frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  <% end %>
-<div>
-エクササイズを新規登録
-<%= form_with model: @exercise, method: :post do |f| %>
-  <%= f.label :url, "YouTubeのURL" %>
-  <%= f.text_field :url %>
-  <%= f.label :part, "Part" %>
-  <%= f.select :part, ["二の腕", "お腹", "胸", "足"],
-  {include_blank: "---"} %>
-  <%= f.label :level, "Level" %>
-  <%= f.select :level, ["1","2", "3"],
-  {include_blank: "---"} %>
+<% if @today_exercise.empty? %>
   <div>
-    <%= f.submit '登録', class: 'btn btn-primary' %>
+  本日登録されたエクササイズはありません
+  </div>
+  <% else %>
+  <div>
+    Part : <%= @today_exercise[0][:part] %>
+  </div>
+  <div>
+    Level : <%= @today_exercise[0][:level] %>
+  </div>
+  <div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @today_exercise[0][:url] %>"
+            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 <% end %>
+
+  エクササイズを新規登録
+  <%= form_with model: @exercise, method: :post do |f| %>
+    <%= f.label :url, "YouTubeのURL" %>
+    <%= f.text_field :url %>
+    <%= f.label :part, "Part" %>
+    <%= f.select :part, ["二の腕", "お腹", "胸", "足"],
+    {include_blank: "---"} %>
+    <%= f.label :level, "Level" %>
+    <%= f.select :level, ["1","2", "3"],
+    {include_blank: "---"} %>
+    <div>
+      <%= f.submit '登録', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
 </div>

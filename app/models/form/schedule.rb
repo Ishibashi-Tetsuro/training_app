@@ -1,6 +1,6 @@
 class Form::Schedule < Schedule
-    REGISTRABLE_ATTRIBUTES = %i(exercise_id training_date user_id)
-    attr_accessor :exercise_id
+    REGISTRABLE_ATTRIBUTES = %i(part training_date user_id)
+    attr_accessor :part
     attr_accessor :training_date
     attr_accessor :user_id
 end
