@@ -6,6 +6,11 @@ class ExercisesController < ApplicationController
   def show
     @exercise = Exercise.new
     @schedules = Schedule.where(user_id: current_user.id, training_date: Date.today)
+    if @schedules.empty?
+      @today_exercise = []
+    else
+      @today_exercise = Exercise.where(part: @schedules[0][:part], user_id: current_user.id).order("RAND()").limit(1)
+    end
   end
 
   def create

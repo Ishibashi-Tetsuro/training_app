@@ -1,15 +1,21 @@
 <h1>Today Exercise</h1>
-  <% @schedules.each do |schedule| %>
-    <div>
-      Part : <%= schedule.exercise.part %>
-    </div>
-    <div>
-      Level : <%= schedule.exercise.level %>
-    </div>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= schedule.exercise.url %>"
-              frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  <% end %>
-<div>
+<% if @today_exercise.empty? %>
+  <div>
+  本日登録されたエクササイズはありません
+  </div>
+  <% else %>
+  <div>
+    Part : <%= @today_exercise[0][:part] %>
+  </div>
+  <div>
+    Level : <%= @today_exercise[0][:level] %>
+  </div>
+  <div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @today_exercise[0][:url] %>"
+            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+<% end %>
+
   エクササイズを新規登録
   <%= form_with model: @exercise, method: :post do |f| %>
     <%= f.label :url, "YouTubeのURL" %>
