@@ -13,6 +13,10 @@ class ExercisesController < ApplicationController
     end
   end
 
+  def new
+    @exercise = Exercise.new
+  end
+
   def create
     @exercise = Exercise.new(exercise_params)
     @exercise.url = @exercise.url.last(11)
