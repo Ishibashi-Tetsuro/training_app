@@ -2,5 +2,9 @@
 <%= form_with model: @diary, method: :post do |f| %>
   <%= f.label :content, "新しい日記を投稿"%>
   <%= f.text_area :content %>
-  <%= f.submit "投稿する", class: 'btn btn-primary' %>
+  <div>
+  <%= f.label :image, "画像" %>
+  <%= f.file_field :image %>
+  </div>
+  <p><%= f.submit "投稿する", class: 'btn btn-primary' %></p>
 <% end %>

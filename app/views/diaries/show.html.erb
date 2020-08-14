@@ -1,3 +1,9 @@
 <h1>日記詳細</h1>
-<%= @diary.content %>
-<%= @diary.created_at %>
+<div>
+  <%= @diary.content %>
+  <%= @diary.created_at %>
+</div>
+<% if @diary.image.attached? %>
+  <%= image_tag @diary.image, widht:300, height: 300 %>
+<% end %>
+
