@@ -2,3 +2,6 @@
 <% @diaries.each do |diary| %>
   <%= link_to diary.content, diary_path(diary.id) %>
 <% end %>
+<div>
+  <%= link_to "日記投稿", new_diary_path %>
+</div>
