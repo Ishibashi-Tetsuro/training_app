@@ -23,3 +23,11 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %Z"
     am: "午前"
     pm: "午後"
+
+  activerecord:
+    models:
+      diary: 日記
+    attributes:
+      diary:
+        content: 内容
+        image: 画像
