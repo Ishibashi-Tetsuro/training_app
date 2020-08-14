@@ -9,8 +9,16 @@
       <p><%= diary.content %></p>
     <% end %>
 </div>
+
 <div>
-  <h2>過去のエクササイズ</h2>
+  <h2>エクササイズ</h2>
+  <%= link_to "新規エクササイズ登録", new_exercise_path, class: "" %>
+  <% @exercises.each do |exercise| %>
+    <div>
+      <%= exercise.part %>
+      <%= exercies.level %>
+    </div>
+  <% end %>
 </div>
 
 <div>
@@ -22,3 +30,4 @@
       <%= schedule.part %>
     </div>
   <% end %>
+</div>
