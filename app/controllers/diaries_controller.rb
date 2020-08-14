@@ -21,10 +21,14 @@ class DiariesController < ApplicationController
     end
   end
 
+  def edit
+    @diary = Diary.find(params[:id])
+  end
+
   private
 
   def diary_params
-    params.require(:diary).permit(:content, :image).merge(user_id: current_user.id)
+    params.require(:diary).permit(:content, :image, :remove_image).merge(user_id: current_user.id)
   end
 
 end
