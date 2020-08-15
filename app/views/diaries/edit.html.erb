@@ -3,8 +3,8 @@
   <%= f.label :content, "今日の日記" %>
   <%= f.text_area :content %>
   <%= f.label :image, "画像を添付する" %>
-    <% if @diary.image.attached? %>
-      <%= image_tag @diary.image, width: 200, height: 200 %>
+    <% if @diary.image.attached? && @diary.image.blob&.persisted? %>
+      <%= image_tag @diary.image.variant(resize_to_fit: [200,200]) %>
     <% end %>
   <%= f.file_field :image %>
   <% if @diary.image.attached? %>
