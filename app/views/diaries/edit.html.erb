@@ -1,5 +1,5 @@
 <h1>日記編集</h1>
-<%= form_with model: @diary, method: :put do |f| %>
+<%= form_with model: @diary, method: :patch do |f| %>
   <%= f.label :content %>
   <%= f.text_area :content %>
   <%= f.label :image %>
