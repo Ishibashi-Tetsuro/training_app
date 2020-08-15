@@ -25,17 +25,6 @@ class DiariesController < ApplicationController
     @diary = Diary.find(params[:id])
   end
 
-  def update
-    @diary = Diary.find(params[:id])
-    if @diary.update(diary_params)
-      redirect_to diaries_path
-    else
-      binding.pry
-      render :edit
-    end
-
-  end
-
   private
 
   def diary_params
