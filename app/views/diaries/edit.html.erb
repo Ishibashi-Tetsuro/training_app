@@ -1,15 +1,15 @@
 <h1>日記編集</h1>
 <%= form_with model: @diary, method: :patch do |f| %>
-  <%= f.label :content %>
+  <%= f.label :content, "今日の日記" %>
   <%= f.text_area :content %>
-  <%= f.label :image %>
-    <% if @diary.image.attached? %>
-      <%= image_tag @diary.image, width: 200, height: 200 %>
+  <%= f.label :image, "画像を添付する" %>
+    <% if @diary.image.attached? && @diary.image.blob&.persisted? %>
+      <%= image_tag @diary.image.variant(resize_to_fit: [200,200]) %>
     <% end %>
   <%= f.file_field :image %>
   <% if @diary.image.attached? %>
+    <%= f.label :remove_image, "画像を削除する"%>
     <%= f.check_box :remove_image %>
-    画像を削除する
   <% end %>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>
