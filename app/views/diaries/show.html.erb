@@ -3,8 +3,5 @@
   <%= @diary.content %>
   <%= @diary.created_at %>
 </div>
-<% if @diary.image.attached? %>
-  <%= image_tag @diary.image, widht:300, height: 300 %>
-<% end %>
 
 <%= link_to "日記を編集する", edit_diary_path %>
