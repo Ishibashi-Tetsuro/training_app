@@ -27,10 +27,12 @@ class DiariesController < ApplicationController
 
   def update
     @diary = Diary.find(params[:id])
-    if @diary.update(diary_params)
+    if @diary.update!(diary_params)
+      flash[:notice] = '編集が完了しました'
       redirect_to diaries_path
     else
-      binding.pry
+      @diary = e.record
+      flash.now[:alert] = '画像の形式が不正な形式です'
       render :edit
     end
 
@@ -39,7 +41,7 @@ class DiariesController < ApplicationController
   private
 
   def diary_params
-    params.require(:diary).permit(:content, :image, :remove_image).merge(user_id: current_user.id)
+    params.require(:diary).permit(:content).merge(user_id: current_user.id)
   end
 
 end

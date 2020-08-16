@@ -25,6 +25,10 @@ ja:
     pm: "午後"
 
   activerecord:
+    errors:
+      messages:
+        record_invalid: "バリデーションに失敗しました %{errors}"
+
     models:
       diary: 日記
     attributes:
