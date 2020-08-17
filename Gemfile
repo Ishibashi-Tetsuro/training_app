@@ -31,10 +31,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-
 gem 'carrierwave', '~> 2.0'
-gem 'ruby-filemagic', '0.7.2'
-gem 'carrierwave-magic'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
