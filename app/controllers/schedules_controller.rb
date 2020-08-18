@@ -8,7 +8,9 @@ class SchedulesController < ApplicationController
     @schedule = Form::ScheduleCollection.new(schedule_collection_params)
     if @schedule.save
       redirect_to user_path(current_user.id)
+      flash[:notice] = 'スケジュールを記録しました'
     else
+      flash.now[:alert] = '入力された値が間違っています'
       render :new
     end
   end
