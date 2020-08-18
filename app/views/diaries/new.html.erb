@@ -6,7 +6,7 @@
   </div>
   <div class="">
     <%= f.label :image %>
-    <%= f.file_field :image %>
+    <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
   </div>
   <div class="">
     <%= f.submit "投稿する", class: 'btn btn-primary' %>
