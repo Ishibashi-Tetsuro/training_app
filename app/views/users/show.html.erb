@@ -5,6 +5,9 @@
 </div>
 <div>
   <h2>投稿一覧</h2>
+    <div>
+      <%= link_to "日記投稿", new_diary_path %>
+    </div>
     <% @diaries.each do |diary| %>
       <p><%= diary.content %></p>
     <% end %>

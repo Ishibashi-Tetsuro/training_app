@@ -1,6 +1,14 @@
 <h1>日記投稿</h1>
 <%= form_with model: @diary, method: :post do |f| %>
-  <%= f.label :content, "新しい日記を投稿"%>
-  <%= f.text_area :content %>
-  <p><%= f.submit "投稿する", class: 'btn btn-primary' %></p>
+  <div class="">
+    <%= f.label :content, "新しい日記を投稿"%>
+    <%= f.text_area :content %>
+  </div>
+  <div class="">
+    <%= f.label :image %>
+    <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
+  </div>
+  <div class="">
+    <%= f.submit "投稿する", class: 'btn btn-primary' %>
+  </div>
 <% end %>

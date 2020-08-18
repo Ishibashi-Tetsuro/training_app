@@ -1,6 +1,11 @@
 <h1>日記一覧</h1>
 <% @diaries.each do |diary| %>
-  <%= link_to diary.content, diary_path(diary.id) %>
+  <%= link_to diary_path(diary) do %>
+    <%= diary.content %>
+    <% if diary.image? %>
+      <%= image_tag diary.image_url(:thumb200) %>
+    <% end %>
+  <% end %>
 <% end %>
 <div>
   <%= link_to "日記投稿", new_diary_path %>
