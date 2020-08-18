@@ -2,6 +2,14 @@
 <div>
   <%= @diary.content %>
   <%= @diary.created_at %>
+  <div class=""></div>
+    <% if @diary.image? %>
+      <%= image_tag @diary.image_url(:thumb400) %>
+    <% end %>
+  </div>
 </div>
 
 <%= link_to "日記を編集する", edit_diary_path %>
+<div class="">
+  <%= link_to "戻る", :back %>
+</div>
