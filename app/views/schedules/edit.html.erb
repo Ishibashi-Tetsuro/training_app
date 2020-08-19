@@ -1,0 +1,28 @@
+<h1>スケジュール変更</h1>
+  <% @schedules.each do |schedule| %>
+    <%= form_with model: schedule, local: true, method: :patch do |f| %>
+      <div class="">
+        <%= render 'layouts/error_messages', model: f.object %>
+        <%= raw sprintf(
+          f.date_select(
+            :training_date,
+            {
+              :discard_year => true,
+              default: Date.today,
+              date_separator: '%s',
+              datetime_separator: '%s',
+            },
+            {class: 'form-control' }
+            ),
+            '月') + '日' %>
+        <%= f.text_field :user_id, value: current_user.id, class: 'user_id' %>
+        <%= f.select :part, ["二の腕", "お腹", "胸", "足"],
+          {include_blank: "---"} %>
+        <%= f.select :work, ["早番", "遅番", "休み"],
+          {include_blank: "---"} %>
+        <%= f.select :shape, ["良い", "不調"],
+          {include_blank: "---"} %>
+        <%= f.submit "更新", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  <% end %>
