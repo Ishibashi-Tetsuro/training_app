@@ -3,7 +3,7 @@
   <div>
   本日登録されたエクササイズはありません
   </div>
-  <% else %>
+<% else %>
   <div>
     Part : <%= @today_exercise[0][:part] %>
   </div>
@@ -11,7 +11,7 @@
     Level : <%= @today_exercise[0][:level] %>
   </div>
   <div>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @today_exercise[0][:url] %>"
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @today_exercise[0][:url].last(11) %>"
             frameborder="0" allow="accelerometer; autoplay; encrypted-media;
             gyroscope; picture-in-picture" allowfullscreen>
     </iframe>

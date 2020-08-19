@@ -1,6 +1,7 @@
 <div>
   エクササイズを新規登録
-  <%= form_with model: @exercise, method: :post do |f| %>
+  <%= form_with model: @exercise, local: true, method: :post do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
     <%= f.label :url, "YouTubeのURL" %>
     <%= f.text_field :url %>
     <%= f.label :part, "Part" %>

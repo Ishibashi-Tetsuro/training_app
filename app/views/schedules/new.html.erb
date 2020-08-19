@@ -1,19 +1,18 @@
-<%= form_for(@schedule, url: schedules_path, method: :post) do |fb| %>
+<%= form_for(@schedule, url: schedules_path, local: true, method: :post) do |fb| %>
   <table class="table">
     <thead>
       <tr>
-        <th>エクササイズ</th>
         <th>実施予定日</th>
+        <th>エクササイズ</th>
+        <th>仕事</th>
+        <th>体調</th>
       </tr>
     </thead>
     <tbody>
     <% i = 0 %>
-      <%= fb.fields_for :schedules do |f| %>
+      <%= fb.fields_for :schedules, local: true do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
         <tr class="item">
-          <td class="text-center">
-            <%= f.select :part, ["二の腕", "お腹", "胸", "足"]  ,
-              {include_blank: "---"} %>
-          </td>
           <td>
             <% i += 1 %>
             <%= raw sprintf(
@@ -30,6 +29,18 @@
                   '月') + '日'
               %>
               <%= f.text_field :user_id, value: current_user.id, class: 'user_id' %>
+          </td>
+          <td class="text-center">
+            <%= f.select :part, ["二の腕", "お腹", "胸", "足"],
+              {include_blank: "---"} %>
+          </td>
+          <td class="text-center">
+            <%= f.select :work, ["早番", "遅番", "休み"],
+              {include_blank: "---"} %>
+          </td>
+          <td class="text-center">
+            <%= f.select :shape, ["良い", "不調"],
+              {include_blank: "---"} %>
           </td>
         </tr>
       <% end %>
