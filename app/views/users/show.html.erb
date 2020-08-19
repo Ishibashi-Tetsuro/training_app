@@ -29,10 +29,12 @@
   <%= link_to "新規スケジュール設定", new_schedule_path, class: "" %>
   <% @schedules.each do |schedule| %>
     <div>
-      <%= schedule.training_date %>
-      <%= schedule.part %>
-      <%= schedule.work %>
-      <%= schedule.shape %>
+      <%= link_to edit_schedule_path(schedule), class: '' do %>
+        <%= schedule.training_date %>
+        <%= schedule.part %>
+        <%= schedule.work %>
+        <%= schedule.shape %>
+      <% end %>
     </div>
   <% end %>
 </div>
