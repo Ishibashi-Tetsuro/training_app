@@ -1,4 +1,4 @@
-<%= form_for(@schedule, url: schedules_path, method: :post) do |fb| %>
+<%= form_for(@schedule, url: schedules_path, local: true, method: :post) do |fb| %>
   <table class="table">
     <thead>
       <tr>
@@ -10,7 +10,8 @@
     </thead>
     <tbody>
     <% i = 0 %>
-      <%= fb.fields_for :schedules do |f| %>
+      <%= fb.fields_for :schedules, local: true do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
         <tr class="item">
           <td>
             <% i += 1 %>

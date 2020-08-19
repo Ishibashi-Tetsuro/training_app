@@ -1,5 +1,6 @@
 <h1>日記投稿</h1>
-<%= form_with model: @diary, method: :post do |f| %>
+<%= form_with model: @diary, local: true, method: :post do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
   <div class="">
     <%= f.label :content, "新しい日記を投稿"%>
     <%= f.text_area :content %>

@@ -23,8 +23,8 @@ class ExercisesController < ApplicationController
 
   def create
     @exercise = Exercise.new(exercise_params)
-    @exercise.url = @exercise.url.last(11)
     if @exercise.save
+      flash[:notice] = '保存が完了しました'
       redirect_to exercise_path(current_user.id)
     else
       render :new
