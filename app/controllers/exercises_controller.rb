@@ -4,6 +4,7 @@ class ExercisesController < ApplicationController
   end
 
   def show
+    @count = Count.find_by(user_id: current_user.id)
     @exercise = Exercise.new
     @schedules = Schedule.where(user_id: current_user.id, training_date: Date.today)
     if @schedules.empty?
