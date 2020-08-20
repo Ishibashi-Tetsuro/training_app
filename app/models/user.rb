@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :schedules, dependent: :destroy
   has_many :exercise, dependent: :destroy
   has_one :count, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_diaries, through: :likes, source: :diary
 end
