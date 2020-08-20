@@ -9,4 +9,7 @@ class User < ApplicationRecord
   has_one :count, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_diaries, through: :likes, source: :diary
+  def already_liked?(diary)
+    self.likes.exists?(diary_id: diary.id)
+  end
 end
