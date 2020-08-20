@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_19_112239) do
+ActiveRecord::Schema.define(version: 2020_08_20_070022) do
 
   create_table "characters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "image"
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(version: 2020_08_19_112239) do
     t.integer "user_id"
   end
 
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "diary_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["diary_id"], name: "index_likes_on_diary_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "schedules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "part"
     t.date "training_date"
@@ -67,4 +76,6 @@ ActiveRecord::Schema.define(version: 2020_08_19_112239) do
   end
 
   add_foreign_key "diaries", "users"
+  add_foreign_key "likes", "diaries"
+  add_foreign_key "likes", "users"
 end

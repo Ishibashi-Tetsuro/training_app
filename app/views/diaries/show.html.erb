@@ -2,12 +2,22 @@
 <div>
   <%= @diary.content %>
   <%= @diary.created_at %>
-  <div class=""></div>
+  <div class="">
     <% if @diary.image? %>
       <%= image_tag @diary.image_url(:thumb400) %>
     <% end %>
   </div>
+  <h3>いいね件数: <%= @diary.likes.count %></h3>
+  <% if current_user.already_liked?(@diary) %>
+    <%= button_to 'いいねを取り消す', diary_like_path(@diary), method: :delete %>
+  <% else %>
+    <%= button_to 'いいね', diary_likes_path(@diary) %>
+  <% end %>
 </div>
+<h2>いいねしたユーザー</h2>
+<% @diary.liked_users.each do |user| %>
+  <li><%= user.email %></li>
+<% end %>
 
 <%= link_to "日記を編集する", edit_diary_path %>
 <div class="">
