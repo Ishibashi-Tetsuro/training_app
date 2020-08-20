@@ -6,6 +6,7 @@ class DiariesController < ApplicationController
 
   def show
     @diary = Diary.find(params[:id])
+    @like = Like.new
   end
 
   def new

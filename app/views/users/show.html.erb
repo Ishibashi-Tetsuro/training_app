@@ -12,6 +12,14 @@
       <p><%= diary.content %></p>
     <% end %>
 </div>
+<div class="">
+  <h2>いいねした投稿</h2>
+  <% @user.liked_diaries.each do |diary| %>
+    <%= link_to diary_path(diary) do %>
+      <%= image_tag diary.image_url(:thumb200) %>
+    <% end %>
+  <% end %>
+</div>
 
 <div>
   <h2>エクササイズ</h2>
