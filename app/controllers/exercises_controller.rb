@@ -1,5 +1,4 @@
 class ExercisesController < ApplicationController
-
   def index
   end
 
@@ -37,5 +36,4 @@ class ExercisesController < ApplicationController
   def exercise_params
     params.require(:exercise).permit(:url, :part, :level).merge(user_id: current_user.id)
   end
-
 end
