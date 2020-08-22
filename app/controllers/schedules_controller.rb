@@ -1,4 +1,5 @@
 class SchedulesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :index, :edit, :update]
 
   def new
     @schedule = Form::ScheduleCollection.new

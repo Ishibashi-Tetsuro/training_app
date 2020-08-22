@@ -1,4 +1,5 @@
 class CountsController < ApplicationController
+  before_action :authenticate_user!, only: [:show, :create, :update]
 
   def show
     @count = Count.find_by(user_id: current_user.id)
