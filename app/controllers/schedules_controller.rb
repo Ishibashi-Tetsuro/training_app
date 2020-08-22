@@ -1,5 +1,6 @@
 class SchedulesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :index, :edit, :update]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def new
     @schedule = Form::ScheduleCollection.new
@@ -45,6 +46,11 @@ class SchedulesController < ApplicationController
 
   def schedule_params
     params.require(:schedule).permit(:training_date, :part, :work, :shape, :user_id)
+  end
+
+  def correct_user
+    schedule = Schedule.find(params[:id])
+    redirect_to root_url unless current_user.id == schedule.user_id
   end
 
 end

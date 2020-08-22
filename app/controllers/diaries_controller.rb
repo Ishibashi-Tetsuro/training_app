@@ -1,5 +1,6 @@
 class DiariesController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     @diaries = Diary.all
@@ -45,6 +46,11 @@ class DiariesController < ApplicationController
 
   def diary_params
     params.require(:diary).permit(:content, :image).merge(user_id: current_user.id)
+  end
+
+  def correct_user
+    diary = Diary.find(params[:id])
+    redirect_to root_url unless current_user.id == diary.user_id
   end
 
 end
