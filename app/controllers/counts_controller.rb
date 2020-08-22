@@ -22,7 +22,6 @@ class CountsController < ApplicationController
       level = 1
       @level_up_day = 1 - @count.day
     end
-    @count.day
     @character = Character.find(level)
     @diary = Diary.new
   end
