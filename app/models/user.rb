@@ -9,7 +9,14 @@ class User < ApplicationRecord
   has_one :count, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_diaries, through: :likes, source: :diary
+
   def already_liked?(diary)
     self.likes.exists?(diary_id: diary.id)
+  end
+
+  def self.guest
+    find_or_create_by(email: "test@example.com") do |user|
+      user.password = 'testtest'
+    end
   end
 end
