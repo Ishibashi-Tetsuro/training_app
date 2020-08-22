@@ -18,8 +18,9 @@
 <% @diary.liked_users.each do |user| %>
   <li><%= user.email %></li>
 <% end %>
-
-<%= link_to "日記を編集する", edit_diary_path %>
+<% if user_signed_in? && current_user.id == @diary.user_id %>
+  <%= link_to "日記を編集する", edit_diary_path %>
+<% end %>
 <div class="">
   <%= link_to "戻る", :back %>
 </div>

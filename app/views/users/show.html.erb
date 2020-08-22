@@ -1,48 +1,85 @@
 <div>
   <h2>ユーザー情報</h2>
-  <p>こんにちは<%= @user.id %>さん</p>
-  <%= @user.email %>
+  <p>こんにちは<%= @user.name %>さん</p>
+  <%= "E-mail：#{@user.email}" %>
+  <div class="">
+    <% if @user.image? %>
+      <%= image_tag @user.image_url(:thumb200) %>
+    <% else %>
+      <%= image_tag 'default.png', :size =>'200x200' %>
+    <% end %>
+  </div>
 </div>
+
+<div class="">
+  <% if user_signed_in? && current_user.id == @user.id %>
+    <%= link_to "ユーザー情報編集", edit_user_registration_path %>
+  <% end %>
+</div>
+
 <div>
   <h2>投稿一覧</h2>
-    <div>
+    <% if user_signed_in? && current_user.id == @user.id %>
       <%= link_to "日記投稿", new_diary_path %>
-    </div>
+    <% end %>
     <% @diaries.each do |diary| %>
-      <p><%= diary.content %></p>
+      <%= link_to diary_path(diary) do %>
+        <%= diary.content %>
+        <% if diary.image? %>
+          <%= image_tag diary.image_url(:thumb200) %>
+        <% end %>
+      <% end %>
     <% end %>
 </div>
 <div class="">
   <h2>いいねした投稿</h2>
   <% @user.liked_diaries.each do |diary| %>
     <%= link_to diary_path(diary) do %>
-      <%= image_tag diary.image_url(:thumb200) %>
+      <%= diary.content %>
+      <% if diary.image? %>
+        <%= image_tag diary.image_url(:thumb200) %>
+      <% end %>
     <% end %>
   <% end %>
 </div>
 
 <div>
   <h2>エクササイズ</h2>
-  <%= link_to "新規エクササイズ登録", new_exercise_path, class: "" %>
+  <% if user_signed_in? && current_user.id == @user.id %>
+    <%= link_to "新規エクササイズ登録", new_exercise_path, class: "" %>
+  <% end %>
   <% @exercises.each do |exercise| %>
-    <div>
-      <%= exercise.part %>
-      <%= exercise.level %>
-    </div>
+      <iframe width="426" height="240" src="https://www.youtube.com/embed/<%= exercise.url.last(11) %>"
+            frameborder="0" allow="accelerometer; autoplay; encrypted-media;
+            gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
   <% end %>
 </div>
 
 <div>
   <h2>スケジュール管理</h2>
-  <%= link_to "新規スケジュール設定", new_schedule_path, class: "" %>
-  <% @schedules.each do |schedule| %>
-    <div>
-      <%= link_to edit_schedule_path(schedule), class: '' do %>
+  <% if user_signed_in? && current_user.id == @user.id %>
+    <%= link_to "新規スケジュール設定", new_schedule_path, class: "" %>
+    <% @schedules.each do |schedule| %>
+      <div>
+        <%= link_to edit_schedule_path(schedule), class: '' do %>
+          <li class="">
+            <%= schedule.training_date %>
+            <%= schedule.part %>
+            <%= schedule.work %>
+            <%= schedule.shape %>
+          </li>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <% @schedules.each do |schedule| %>
+      <li class="">
         <%= schedule.training_date %>
         <%= schedule.part %>
         <%= schedule.work %>
         <%= schedule.shape %>
-      <% end %>
-    </div>
+      </li>
+    <% end %>
   <% end %>
 </div>

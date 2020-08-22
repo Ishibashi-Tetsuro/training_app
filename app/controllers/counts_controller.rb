@@ -1,4 +1,5 @@
 class CountsController < ApplicationController
+  before_action :authenticate_user!, only: [:show, :create, :update]
 
   def show
     @count = Count.find_by(user_id: current_user.id)
@@ -21,7 +22,6 @@ class CountsController < ApplicationController
       level = 1
       @level_up_day = 1 - @count.day
     end
-    @count.day
     @character = Character.find(level)
     @diary = Diary.new
   end
