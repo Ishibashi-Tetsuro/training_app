@@ -1,12 +1,17 @@
 <div>
   <h2>ユーザー情報</h2>
-  <p>こんにちは<%= @user.id %>さん</p>
-  <%= @user.email %>
-  <% if @user.image? %>
-    <%= image_tag @user.image_url(:thumb200) %>
-  <% else %>
-    <%= image_tag 'default.png', :size =>'200x200' %>
-  <% end %>
+  <p>こんにちは<%= @user.name %>さん</p>
+  <%= "E-mail：#{@user.email}" %>
+  <div class="">
+    <% if @user.image? %>
+      <%= image_tag @user.image_url(:thumb200) %>
+    <% else %>
+      <%= image_tag 'default.png', :size =>'200x200' %>
+    <% end %>
+  </div>
+</div>
+<div class="">
+  <%= link_to "ユーザー情報編集", edit_user_registration_path %>
 </div>
 <div>
   <h2>投稿一覧</h2>
