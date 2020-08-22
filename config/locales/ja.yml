@@ -41,3 +41,6 @@ ja:
         part: エクササイズ
         work: 仕事
         shape: 体調
+      user:
+        name: ユーザー名
+        image: アイコン画像
