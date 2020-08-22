@@ -22,4 +22,14 @@ class User < ApplicationRecord
       user.name = 'テストユーザー'
     end
   end
+
+  def update_without_current_password(params, *options)
+    params.delete(:current_password)
+    params.delete(:password)
+    params.delete(:password_confirmation)
+
+    result = update_attributes(params, *options)
+    clean_up_passwords
+    result
+  end
 end
