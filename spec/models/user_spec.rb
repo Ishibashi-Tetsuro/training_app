@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { FactoryBot.create(:user) }
-  let(:diary) { FactoryBot.create(:diary, user: user)}
+  let(:user) { create(:user) }
+  let(:diary) { create(:diary)}
 
    # 名前、メール、パスワードがあり、有効なファクトリを持つこと
    it "has a valid factory" do
-    expect(FactoryBot.build(:user)).to be_valid
+    expect(build(:user)).to be_valid
   end
 
   # 存在性チェック
@@ -36,7 +36,7 @@ RSpec.describe User, type: :model do
   # 重複したメールアドレスなら無効な状態であること
   it "is invalid with a duplicate email address" do
     user.save
-    dupulicate_user = FactoryBot.build(:user, email: user.email)
+    dupulicate_user = build(:user, email: user.email)
     dupulicate_user.valid?
     expect(dupulicate_user.errors[:email]).to include("はすでに存在します")
   end
@@ -98,14 +98,14 @@ RSpec.describe User, type: :model do
   describe "check image upload" do
     # 画像なしでも有効であること
     it "is valid with no image" do
-      user = FactoryBot.build(:user, image: nil)
+      user = build(:user, image: nil)
       expect(user).to be_valid
     end
 
     # 5MBを超える画像はアップロードできないこと
     it "can not upload an image over 5MB" do
       image_path = Rails.root.join("public/default/over5mb.jpg")
-      user = FactoryBot.build(:user, image: File.open(image_path))
+      user = build(:user, image: File.open(image_path))
       user.valid?
       expect(user.errors[:image]).to include "は5MB以下にする必要があります"
     end
@@ -115,31 +115,31 @@ RSpec.describe User, type: :model do
   describe "dependent: destoy" do
     # 削除すると、紐づく日記も全て削除されること
     it "destroys all diaries when deleted" do
-      FactoryBot.create(:diary, user: user)
+      create(:diary, user: user)
       expect { user.destroy }.to change(Diary, :count).by(-1)
     end
 
     # 削除すると、紐づくスケジュールも全て削除されること
     it "destroys all scheudles when deleted" do
-      FactoryBot.create(:schedule, user: user)
+      create(:schedule, user: user)
       expect { user.destroy }.to change(Schedule, :count).by(-1)
     end
 
     # 削除すると、紐づくエクササイズも全て削除されること
     it "destroys all exercises when deleted" do
-      FactoryBot.create(:exercise, user: user)
+      create(:exercise, user: user)
       expect { user.destroy }.to change(Exercise, :count).by(-1)
     end
 
     # 削除すると、紐づくいいね！(likes)も全て削除されること
     it "destroys all likes when deleted" do
-      FactoryBot.create(:like, user: user, diary: diary)
+      create(:like, user: user, diary: diary)
       expect { user.destroy }.to change(Like, :count).by(-1)
     end
 
     # 削除すると、紐づくカウントも全て削除されること
     it "destroys all count when deleted" do
-      FactoryBot.create(:count, user: user)
+      create(:count, user: user)
       expect { user.destroy }.to change(Count, :count).by(-1)
     end
   end
