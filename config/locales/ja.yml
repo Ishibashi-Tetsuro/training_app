@@ -28,14 +28,14 @@ ja:
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました %{errors}"
+
     models:
       diary: 日記
       schedule: スケジュール
     attributes:
       diary:
         content: 本文
-        image: 画像
-        content_or_image: 本文または画像
+        image: 写真
       schedule:
         training_date: 実施予定日
         part: エクササイズ

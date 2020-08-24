@@ -2,8 +2,12 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-  validates :name, presence: true
+         :rememberable, :validatable
+  validates :name, presence: true, uniqueness: true, length: { maximum: 15 }
+  VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,12}\z/
+    validates :password, presence: true,
+              format: { with: VALID_PASSWORD_REGEX,
+              message: "は半角6~12文字英大文字・小文字・数字それぞれ１文字以上含む必要があります"}
   mount_uploader :image, ImageUploader
   has_many :diaries, dependent: :destroy
   has_many :schedules, dependent: :destroy
@@ -18,7 +22,7 @@ class User < ApplicationRecord
 
   def self.guest
     find_or_create_by(email: "test@example.com") do |user|
-      user.password = 'testtest'
+      user.password = 'Testtest1'
       user.name = 'テストユーザー'
     end
   end
