@@ -1,0 +1,14 @@
+example_id                                | status | run_time        |
+----------------------------------------- | ------ | --------------- |
+./spec/requests/daiaries_spec.rb[1:1]     | passed | 0.79378 seconds |
+./spec/requests/daiaries_spec.rb[1:2:1]   | passed | 0.37387 seconds |
+./spec/requests/daiaries_spec.rb[1:3:1]   | passed | 0.23727 seconds |
+./spec/requests/daiaries_spec.rb[1:4:1:1] | passed | 0.44917 seconds |
+./spec/requests/daiaries_spec.rb[1:4:1:2] | passed | 0.43885 seconds |
+./spec/requests/daiaries_spec.rb[1:4:2:1] | passed | 0.23196 seconds |
+./spec/requests/daiaries_spec.rb[1:4:2:2] | passed | 0.23674 seconds |
+./spec/requests/daiaries_spec.rb[1:5:1:1] | failed | 0.65575 seconds |
+./spec/requests/daiaries_spec.rb[1:5:1:2] | failed | 0.6733 seconds  |
+./spec/requests/daiaries_spec.rb[1:5:2:1] | failed | 0.45251 seconds |
+./spec/requests/daiaries_spec.rb[1:6:1]   | failed | 0.47039 seconds |
+./spec/requests/daiaries_spec.rb[1:6:2]   | failed | 0.63214 seconds |

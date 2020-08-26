@@ -34,12 +34,18 @@ class DiariesController < ApplicationController
     @diary = Diary.find(params[:id])
     if @diary.update(diary_params)
       flash[:notice] = '編集が完了しました'
-      redirect_to diaries_path
+      redirect_to diary_path(@diary)
     else
       flash.now[:alert] = '画像の形式が不正な形式です'
       render :edit
     end
+  end
 
+  def destroy
+    diary = Diary.find(params[:id])
+    diary.destroy
+    flash[:notice] = '１件の日記を削除しました'
+    redirect_to diaries_path
   end
 
   private
