@@ -20,6 +20,7 @@
 <% end %>
 <% if user_signed_in? && current_user.id == @diary.user_id %>
   <%= link_to "日記を編集する", edit_diary_path %>
+  <%= link_to "日記を削除する", diary_path(@diary), method: :delete %>
 <% end %>
 <div class="">
   <%= link_to "戻る", :back %>
