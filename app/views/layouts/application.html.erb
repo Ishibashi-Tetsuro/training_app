@@ -5,13 +5,16 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice.present? && alert.present? %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    <% end %>
     <div class="wrapper">
       <div class="header">
         <p ><%= link_to "LAVA", root_path, class: "header-logo" %></p>
@@ -28,7 +31,9 @@
           <% end %>
         </ul>
       </div>
-      <%= yield %>
+      <div class="body">
+        <%= yield %>
+      </div>
       <div class="footer">
         <ul class="lists">
           <li><%= link_to "作者紹介", "#", class: "list" %></li>
