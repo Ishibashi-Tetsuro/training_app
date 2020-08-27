@@ -1,3 +1,164 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.link {
+  text-decoration: none;
+  list-style: none;
+  color: #433f3f;
+}
+
+.user_wrapper {
+  display: flex;
+  justify-content: center;
+  .user_show {
+    background-color: white;
+    width: 300px;
+    height: 570px;
+    margin: 0 30px;
+    padding: 30px 0;
+    text-align: center;
+    color: #433f3f;
+    .user_style {
+      margin: 0 30px;
+      .user_image {
+        padding: 10px;
+        text-align: center;
+      }
+      .user_info {
+        .user_name {
+          font-weight: 700;
+          font-size: 20px;
+          padding: 5px 0 ;
+        }
+        .user_email {
+          padding-bottom: 10px;
+        }
+        .user_character {
+          border: 1px solid lightgrey;
+          border-radius: 5px;
+          padding: 10px 0;
+          margin: 15px 0 30px 0;
+          p {
+            margin: 0;
+            padding: 0;
+          }
+        }
+        .user_edit {
+          background-color: #999999;
+          padding: 5px 0;
+          .link {
+            color: white;
+            font-size: 15px;
+            margin: 0;
+          }
+          .link_edit {
+            padding-right: 30px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.link {
+  text-decoration: none;
+  list-style: none;
+  margin: 0 30px;
+  color: #433f3f;
+}
+
+.user_content {
+  color: #433f3f;
+  .diary_show {
+    background-color: white;
+    padding-bottom: 10px;
+    width: 460px;
+    margin-right: 30px;
+  }
+  .other_show {
+    background-color: white;
+    padding-bottom: 10px;
+    width: 460px;
+    margin: 50px 30px 0 0;
+  }
+  .title_style {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+    .title {
+      font-size: 20px;
+      margin: 10px 0 10px 30px;
+     }
+    .title_edit {
+    }
+  }
+  .diary {
+    margin: 10px 30px 50px 30px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    width: 402px;
+    .diary_user {
+      margin-left: 10px;
+      font-size: 15px;
+      .user_name {
+        margin-left: 10px;
+      }
+    }
+    .diary_content {
+      color: #433f3f;
+      padding: 15px 0 0 10px;
+    }
+    .diary_image {
+    }
+    .diary_like {
+      margin: 0 0 10px 5px;
+      font-size: 13px;
+      .heart_red {
+        margin: 0 5px;
+        color: #ED4956;
+      }
+    }
+    .diary_day {
+      font-size: 5px;
+      color: #dcdcdc;
+      padding: 0 0 10px 10px;
+    }
+  }
+  .exercise_content {
+    padding: 20px 0 20px 0;
+    text-align: center;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    margin: 10px auto 40px auto;
+    width: 402px;
+    .content {
+      padding-bottom: 15px;
+      .level {
+        padding-right: 15px;
+        margin-right: 15px;
+        border-right: 1px solid #433f3f;
+      }
+    }
+    .exercise_edit {
+      text-align: right;
+      font-size: 15px;
+      padding-top: 10px;
+      .link {
+        color: #dcdcdc;
+      }
+    }
+  }
+  .schedule_content {
+    margin: 10px auto 40px auto;
+    .schedule_day {
+      text-align: center;
+      vertical-align: middle;
+      padding: 8px 17px;
+      .link {
+        margin: 0;
+      }
+    }
+  }
+}
+
+table tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
