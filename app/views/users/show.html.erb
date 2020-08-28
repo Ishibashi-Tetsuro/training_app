@@ -21,7 +21,7 @@
         </div>
         <div class="user_edit">
           <% if user_signed_in? && current_user.id == @user.id %>
-            <%= link_to edit_user_registration_path, class: "link link_edit" do %>
+            <%= link_to edit_user_registration_path, class: "link" do %>
               <i class="fa fa-edit edit_icon"></i>
               <%= "編集" %>
             <% end %>
@@ -38,15 +38,14 @@
 
   <div class="user_content">
     <%# 自分の日記 %>
-    <div class="diary_show">
+    <div class="show_wrapper">
       <div class="title_style">
         <h2 class="title"><i class="fas fa-angle-right space"></i>自分の日記</h2>
         <% if user_signed_in? && current_user.id == @user.id %>
           <%= link_to new_diary_path, class: "link" do %>
-            <div class="title_edit">
-              <i class="fa fa-edit" aria-hidden="true"></i>
-              <%= "日記を投稿" %>
-            </div>
+            <i class="fa fa-edit" aria-hidden="true"></i>
+            <span class="pc_character">日記を投稿</span>
+            <span class="smart_character">投稿</span>
           <% end %>
         <% end %>
       </div>
@@ -65,7 +64,7 @@
                 </div
               <% end %>
               <%= link_to diary_path(diary), class: "link" do %>
-                <li class="diary_iamge"><%= image_tag diary.image_url(:gallery) %></li>
+                <img src="<%= diary.image %>" class="diary_image" alt="日記画像">
                 <li class="diary_content"><%= diary.content %></li>
               <% end %>
               <p class="diary_like">
@@ -80,7 +79,7 @@
     </div>
 
     <%# いいねした日記 %>
-    <div class="other_show">
+    <div class="show_wrapper other_show">
       <div class="title_style">
         <h2 class="title"><i class="fas fa-angle-right space"></i>いいねした投稿</h2>
       </div>
@@ -99,7 +98,7 @@
                 </li>
               <% end %>
               <%= link_to diary_path(diary), class: "link" do %>
-                <li class="diary_iamge"><%= image_tag diary.image_url(:thumb400) %></li>
+                <img src="<%= diary.image %>" class="diary_image" alt="日記画像">
                 <li class="diary_content"><%= diary.content %></li>
               <% end %>
               <p class="diary_like">
@@ -114,13 +113,14 @@
     </div>
 
     <%# エクササイズ管理 %>
-    <div class="other_show">
+    <div class="show_wrapper other_show">
       <div class="title_style">
         <h2 class="title"><i class="fas fa-angle-right space"></i>エクササイズ</h2>
         <% if user_signed_in? && current_user.id == @user.id %>
           <%= link_to new_exercise_path, class: "link" do %>
             <i class="fa fa-edit" aria-hidden="true"></i>
-            <%= "エクササイズ追加" %>
+            <span class="pc_character">エクササイズを追加</span>
+            <span class="smart_character">追加</span>
           <% end %>
         <% end %>
       </div>
@@ -136,10 +136,12 @@
                 </span>
                 <%= exercise.part %>
               </div>
-              <iframe width="400" height="225" src="https://www.youtube.com/embed/<%= exercise.url.last(11) %>"
-                      frameborder="0" allow="accelerometer; autoplay; encrypted-media;
-                      gyroscope; picture-in-picture" allowfullscreen>
-              </iframe>
+              <div class="iframe_wrap">
+                <iframe width="400" height="225" src="https://www.youtube.com/embed/<%= exercise.url.last(11) %>"
+                        frameborder="0" allow="accelerometer; autoplay; encrypted-media;
+                        gyroscope; picture-in-picture" allowfullscreen>
+                </iframe>
+              </div>
               <div class="exercise_edit">
                 <%= link_to edit_exercise_path(exercise), class: "link" do %>
                   <i class="fa fa-edit edit_icon"></i>
@@ -154,12 +156,13 @@
 
     <%# スケジュール管理 %>
     <% if user_signed_in? && current_user.id == @user.id %>
-      <div class="other_show">
+      <div class="show_wrapper other_show">
         <div class="title_style">
           <h2 class="title"><i class="fas fa-angle-right space"></i>スケジュール管理</h2>
           <%= link_to new_schedule_path, class: "link" do %>
             <i class="fa fa-edit" aria-hidden="true"></i>
-            <%= "スケジュール追加" %>
+            <span class="pc_character">スケジュール追加</span>
+            <span class="smart_character">追加</span>
           <% end %>
         </div>
         <table class="schedule_content">
