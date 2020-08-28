@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'users/show.js' %>
 <div class="user_wrapper">
   <div class="user_show">
     <div class="user_style">
@@ -39,7 +40,7 @@
     <%# 自分の日記 %>
     <div class="diary_show">
       <div class="title_style">
-        <h2 class="title">自分の日記</h2>
+        <h2 class="title"><i class="fas fa-angle-right space"></i>自分の日記</h2>
         <% if user_signed_in? && current_user.id == @user.id %>
           <%= link_to new_diary_path, class: "link" do %>
             <div class="title_edit">
@@ -49,65 +50,73 @@
           <% end %>
         <% end %>
       </div>
-        <% @diaries.each do |diary| %>
-          <div class="diary">
-            <%= link_to user_path(diary.user.id), class: "link" do %>
-              <div class="diary_user">
-                <% if diary.user.image? %>
-                  <%= image_tag diary.user.image_url(:thumb50) %>
-                <% else %>
-                  <%= image_tag 'default.png', :size =>'30x30' %>
-                <% end %>
-                <span class="user_name"><%= diary.user.name %></span>
-              </div
-            <% end %>
-            <%= link_to diary_path(diary), class: "link" do %>
-              <li class="diary_iamge"><%= image_tag diary.image_url(:thumb400) %></li>
-              <li class="diary_content"><%= diary.content %></li>
-            <% end %>
-            <p class="diary_like">
-              <i class="fa fa-heart heart_red" aria-hidden="true"></i>
-              <%= diary.likes.count %>
-            </p>
-            <p class="diary_day"><%= l diary.created_at %></p>
-          </div>
-        <% end %>
+      <div class="content_hidden">
+        <div class="content_show">
+          <% @diaries.each do |diary| %>
+            <div class="content">
+              <%= link_to user_path(diary.user.id), class: "link" do %>
+                <div class="diary_user">
+                  <% if diary.user.image? %>
+                    <%= image_tag diary.user.image_url(:thumb50) %>
+                  <% else %>
+                    <%= image_tag 'default.png', :size =>'30x30' %>
+                  <% end %>
+                  <span class="user_name"><%= diary.user.name %></span>
+                </div
+              <% end %>
+              <%= link_to diary_path(diary), class: "link" do %>
+                <li class="diary_iamge"><%= image_tag diary.image_url(:gallery) %></li>
+                <li class="diary_content"><%= diary.content %></li>
+              <% end %>
+              <p class="diary_like">
+                <i class="fa fa-heart heart_red" aria-hidden="true"></i>
+                <%= diary.likes.count %>
+              </p>
+              <p class="diary_day"><%= l diary.created_at %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
 
     <%# いいねした日記 %>
     <div class="other_show">
       <div class="title_style">
-        <h2 class="title">いいねした投稿</h2>
+        <h2 class="title"><i class="fas fa-angle-right space"></i>いいねした投稿</h2>
       </div>
-      <% @user.liked_diaries.each do |diary| %>
-        <div class="diary">
-          <%= link_to user_path(diary.user.id), class: "link" do %>
-            <li class="diary_user">
-              <% if diary.user.image? %>
-                <%= image_tag diary.user.image_url(:thumb50) %>
-              <% else %>
-                <%= image_tag 'default.png', :size =>'30x30' %>
+      <div class="content_hidden">
+        <div class="content_show">
+          <% @user.liked_diaries.each do |diary| %>
+            <div class="content">
+              <%= link_to user_path(diary.user.id), class: "link" do %>
+                <li class="diary_user">
+                  <% if diary.user.image? %>
+                    <%= image_tag diary.user.image_url(:thumb50) %>
+                  <% else %>
+                    <%= image_tag 'default.png', :size =>'30x30' %>
+                  <% end %>
+                  <span class="user_name"><%= diary.user.name %></span>
+                </li>
               <% end %>
-              <span class="user_name"><%= diary.user.name %></span>
-            </li>
+              <%= link_to diary_path(diary), class: "link" do %>
+                <li class="diary_iamge"><%= image_tag diary.image_url(:thumb400) %></li>
+                <li class="diary_content"><%= diary.content %></li>
+              <% end %>
+              <p class="diary_like">
+                <i class="fa fa-heart heart_red" aria-hidden="true"></i>
+                <%= diary.likes.count %>
+              </p>
+              <p class="diary_day"><%= l diary.created_at %></p>
+            </div>
           <% end %>
-          <%= link_to diary_path(diary), class: "link" do %>
-            <li class="diary_iamge"><%= image_tag diary.image_url(:thumb400) %></li>
-            <li class="diary_content"><%= diary.content %></li>
-          <% end %>
-          <p class="diary_like">
-            <i class="fa fa-heart heart_red" aria-hidden="true"></i>
-            <%= diary.likes.count %>
-          </p>
-          <p class="diary_day"><%= l diary.created_at %></p>
         </div>
-      <% end %>
+      </div>
     </div>
 
     <%# エクササイズ管理 %>
     <div class="other_show">
       <div class="title_style">
-        <h2 class="title">エクササイズ</h2>
+        <h2 class="title"><i class="fas fa-angle-right space"></i>エクササイズ</h2>
         <% if user_signed_in? && current_user.id == @user.id %>
           <%= link_to new_exercise_path, class: "link" do %>
             <i class="fa fa-edit" aria-hidden="true"></i>
@@ -115,35 +124,39 @@
           <% end %>
         <% end %>
       </div>
-      <% @exercises.each do |exercise| %>
-        <div class="exercise_content">
-          <div class="content">
-            <span class="level">
-              <% exercise.level.times do %>
-                <i class="fas fa-dumbbell"></i>
-              <% end %>
-            </span>
-            <%= exercise.part %>
-          </div>
-          <iframe width="400" height="225" src="https://www.youtube.com/embed/<%= exercise.url.last(11) %>"
-                  frameborder="0" allow="accelerometer; autoplay; encrypted-media;
-                  gyroscope; picture-in-picture" allowfullscreen>
-          </iframe>
-          <div class="exercise_edit">
-            <%= link_to edit_exercise_path(exercise), class: "link" do %>
-              <i class="fa fa-edit edit_icon"></i>
-              <%= "編集" %>
-            <% end %>
-          </div>
+      <div class="content_hidden">
+        <div class="content_show">
+          <% @exercises.each do |exercise| %>
+            <div class="content exercise_content">
+              <div class="exercise_info">
+                <span class="level">
+                  <% exercise.level.times do %>
+                    <i class="fas fa-dumbbell"></i>
+                  <% end %>
+                </span>
+                <%= exercise.part %>
+              </div>
+              <iframe width="400" height="225" src="https://www.youtube.com/embed/<%= exercise.url.last(11) %>"
+                      frameborder="0" allow="accelerometer; autoplay; encrypted-media;
+                      gyroscope; picture-in-picture" allowfullscreen>
+              </iframe>
+              <div class="exercise_edit">
+                <%= link_to edit_exercise_path(exercise), class: "link" do %>
+                  <i class="fa fa-edit edit_icon"></i>
+                  <%= "編集" %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
 
     <%# スケジュール管理 %>
     <% if user_signed_in? && current_user.id == @user.id %>
       <div class="other_show">
         <div class="title_style">
-          <h2 class="title">スケジュール管理</h2>
+          <h2 class="title"><i class="fas fa-angle-right space"></i>スケジュール管理</h2>
           <%= link_to new_schedule_path, class: "link" do %>
             <i class="fa fa-edit" aria-hidden="true"></i>
             <%= "スケジュール追加" %>
