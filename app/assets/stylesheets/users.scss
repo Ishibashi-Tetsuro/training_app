@@ -88,15 +88,13 @@
       margin: 10px 0 10px 30px;
       .space {
         margin-right: 10px;
-        transition: all 0.2s ease-in-out;
+        transition: all 0.3s ease-in-out;
       }
     }
   }
   .open .title .space {
-    -webkit-transform: rotate(90deg);
     transform: rotate(90deg);
-    top: 45%;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
   .content_hidden {
     display: none;
