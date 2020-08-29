@@ -156,7 +156,7 @@
 
     <%# スケジュール管理 %>
     <% if user_signed_in? && current_user.id == @user.id %>
-      <div class="show_wrapper other_show">
+      <div class="show_wrapper other_show schedule_show">
         <div class="title_style">
           <h2 class="title"><i class="fas fa-angle-right space"></i>スケジュール管理</h2>
           <%= link_to new_schedule_path, class: "link" do %>
