@@ -13,16 +13,16 @@
   justify-content: center;
   .user_show {
     background-color: white;
-    width: 300px;
-    height: 545px;
+    padding: 20px 0;
     margin: 0 30px;
-    padding: 30px 0;
     text-align: center;
     color: #433f3f;
+    height: 503px;
+    border-radius: 5px;
     .user_style {
       margin: 0 30px;
       .user_image {
-        padding: 10px;
+        padding-bottom: 5px;
         text-align: center;
       }
       .user_info {
@@ -31,14 +31,14 @@
           font-size: 20px;
           padding: 5px 0 ;
         }
-        .user_email {
-          padding-bottom: 10px;
-        }
         .user_character {
           border: 1px solid lightgrey;
           border-radius: 5px;
           padding: 10px 0;
-          margin: 15px 0 30px 0;
+          margin: 15px 0 20px 0;
+          .character_image_tag {
+            vertical-align: middle;
+          }
           p {
             margin: 0;
             padding: 0;
@@ -123,6 +123,11 @@
     .diary_user {
       margin: 10px 0 10px 15px;
       font-size: 15px;
+      display: flex;
+      align-items: center;
+      .user_icon_tag {
+        vertical-align: middle;
+      }
       .user_name {
         margin-left: 10px;
       }
@@ -131,18 +136,26 @@
       color: #433f3f;
       padding: 15px 0 15px 15px;
     }
-    .diary_like {
-      margin: 0 0 10px 12px;
-      font-size: 13px;
-      .heart_red {
-        margin: 0 5px;
-        color: #ED4956;
-      }
+    img {
+      vertical-align: middle;
     }
-    .diary_day {
-      font-size: 5px;
-      color: #dcdcdc;
-      padding: 0 0 5px 15px;
+    .diary_info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0 12px 12px 12px;
+      .diary_like {
+        font-size: 13px;
+        .heart_red {
+          margin: 0 5px;
+          color: #ED4956;
+        }
+      }
+      .diary_day {
+        margin-left: 12px;
+        font-size: 8px;
+        color: #dcdcdc;
+      }
     }
   }
   .exercise_content {
