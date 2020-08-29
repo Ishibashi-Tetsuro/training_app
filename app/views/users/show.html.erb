@@ -15,7 +15,7 @@
         </div>
         <div class="user_character">
           <p><%= "ユーザーレベル#{@level}" %></p>
-          <%= image_tag @character.image, :size =>'200x200' %>
+          <%= image_tag @character.image, :size =>'200x200', class: "character_image_tag" %>
           <p><%= "今日は#{@count.day}日目"%></p>
           <p><%= "あと#{@level_up_day}日でレベルUP！" %></p>
         </div>
@@ -55,23 +55,31 @@
             <div class="content">
               <%= link_to user_path(diary.user.id), class: "link" do %>
                 <div class="diary_user">
-                  <% if diary.user.image? %>
-                    <%= image_tag diary.user.image_url(:thumb50) %>
-                  <% else %>
-                    <%= image_tag 'default.png', :size =>'30x30' %>
-                  <% end %>
-                  <span class="user_name"><%= diary.user.name %></span>
-                </div
+                  <div class="user_icon">
+                    <% if diary.user.image? %>
+                      <%= image_tag diary.user.image_url(:thumb30), class: "user_icon_tag" %>
+                    <% else %>
+                      <%= image_tag 'default.png', :size =>'30x30', class: "user_icon_tag" %>
+                    <% end %>
+                  </div>
+                  <div class="user_name">
+                    <%= diary.user.name %>
+                  </div>
+                </div>
               <% end %>
               <%= link_to diary_path(diary), class: "link" do %>
                 <img src="<%= diary.image %>" class="diary_image" alt="日記画像">
                 <li class="diary_content"><%= diary.content %></li>
               <% end %>
-              <p class="diary_like">
-                <i class="fa fa-heart heart_red" aria-hidden="true"></i>
-                <%= diary.likes.count %>
-              </p>
-              <p class="diary_day"><%= l diary.created_at %></p>
+              <div class="diary_info">
+                <div class="diary_like">
+                  <i class="fa fa-heart heart_red" aria-hidden="true"></i>
+                  <%= diary.likes.count %>
+                </div>
+                <div class="diary_day">
+                  <%= l diary.created_at %>
+                </div>
+              </div>
             </div>
           <% end %>
         </div>
@@ -101,11 +109,15 @@
                 <img src="<%= diary.image %>" class="diary_image" alt="日記画像">
                 <li class="diary_content"><%= diary.content %></li>
               <% end %>
-              <p class="diary_like">
-                <i class="fa fa-heart heart_red" aria-hidden="true"></i>
-                <%= diary.likes.count %>
-              </p>
-              <p class="diary_day"><%= l diary.created_at %></p>
+              <div class="diary_info">
+                <div class="diary_like">
+                  <i class="fa fa-heart heart_red" aria-hidden="true"></i>
+                  <%= diary.likes.count %>
+                </div>
+                <div class="diary_day">
+                  <%= l diary.created_at %>
+                </div>
+              </div>
             </div>
           <% end %>
         </div>
