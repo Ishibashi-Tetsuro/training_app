@@ -12,7 +12,7 @@
 
   <body>
     <%= javascript_include_tag 'style/header.js' %>
-    <% if notice.present? && alert.present? %>
+    <% if notice.present? || alert.present? %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     <% end %>
