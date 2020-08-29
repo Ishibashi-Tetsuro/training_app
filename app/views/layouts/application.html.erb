@@ -11,13 +11,14 @@
   </head>
 
   <body>
+    <%= javascript_include_tag 'style/header.js' %>
     <% if notice.present? && alert.present? %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     <% end %>
     <div class="wrapper">
       <div class="header">
-        <p ><%= link_to "LAVA", root_path, class: "header-logo" %></p>
+        <div><%= link_to "LAVA", root_path, class: "header-logo" %></div>
         <ul class="lists">
           <% if user_signed_in? %>
             <li><%= link_to "エクササイズ", exercise_path(current_user.id), class: "list" %></li>
@@ -30,6 +31,24 @@
             <li><%= link_to "ログイン", new_user_session_path, class: "list list-border" %></li>
           <% end %>
         </ul>
+        <nav class="sp-nav">
+          <ul>
+            <% if user_signed_in? %>
+              <li><%= link_to "エクササイズ", exercise_path(current_user.id), class: "nav_list" %></li>
+              <li><%= link_to "日記一覧", diaries_path, class: "nav_list" %></li>
+              <li><%= link_to "スケジュール", schedules_path, class: "nav_list" %></li>
+              <li><%= link_to "マイページ", user_path(current_user.id), class: "nav_list" %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav_list" %></li>
+            <% else %>
+              <li><%= link_to "新規登録", new_user_registration_path, class: "nav_list" %></li>
+              <li><%= link_to "ログイン", new_user_session_path, class: "nav_list" %></li>
+            <% end %>
+              <li class="close"><span>閉じる</span></li>
+          </ul>
+        </nav>
+        <div class="hamburger">
+          <span></span>
+        </div>
       </div>
       <div class="body">
         <%= yield %>
