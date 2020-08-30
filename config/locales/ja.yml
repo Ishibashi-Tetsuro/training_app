@@ -26,7 +26,13 @@ ja:
 
   activerecord:
     errors:
+      format: "%{attribute}%{message}"
       messages:
+        blank: "%{attribute}を入力してください"
+        confirmation: "確認用%{attribute}と%{attribute}が一致しません"
+        too_short: "%{attribute}は%{count}文字以上に設定して下さい。"
+        too_long: "%{attribute}は%{count}文字以内で入力してください"
+        taken: "すでに使用されている%{attribute}です"
         record_invalid: "バリデーションに失敗しました %{errors}"
 
     models:

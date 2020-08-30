@@ -7,7 +7,7 @@ class User < ApplicationRecord
   VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,12}\z/
     validates :password,
               format: { with: VALID_PASSWORD_REGEX,
-              message: "は半角6~12文字英大文字・小文字・数字それぞれ１文字以上含む必要があります"}
+              message: "パスワードは半角6~12文字英大文字・小文字・数字それぞれ１文字以上含む必要があります"}
   validates_presence_of :password, if: :password_required?
   mount_uploader :image, ImageUploader
   has_many :diaries, dependent: :destroy
