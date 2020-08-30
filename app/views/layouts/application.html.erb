@@ -9,6 +9,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
   </head>
 
   <body>
@@ -18,7 +19,6 @@
     <% elsif alert.present? %>
       <p class="flash"><%= alert %></p>
     <% end %>
-    <div class="wrapper">
       <div class="header">
         <div><%= link_to "LAVA", root_path, class: "header-logo" %></div>
         <ul class="lists">
@@ -44,6 +44,7 @@
             <% else %>
               <li><%= link_to "新規登録", new_user_registration_path, class: "nav_list" %></li>
               <li><%= link_to "ログイン", new_user_session_path, class: "nav_list" %></li>
+              <li><%= link_to "テストユーザーでログイン", users_guest_sign_in_path, method: :post, class: "nav_list" %></li>
             <% end %>
               <li class="close"><span>閉じる</span></li>
           </ul>
@@ -62,6 +63,5 @@
         </ul>
         <p class="copyright">Copyright ©︎TETSURO ISHIBASHI All Rights Reserved.</p>
       </div>
-    </div>
   </body>
 </html>
