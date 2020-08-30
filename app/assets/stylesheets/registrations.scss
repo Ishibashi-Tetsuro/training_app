@@ -82,3 +82,53 @@
     display: contents;
   }
 }
+@media screen and (max-width: 480px) {
+  .form-wrapper {
+    width: 100vw;
+    font-size: 10px;
+    .form-for {
+      width: 100vw;
+      margin: 0 20px;
+      .form-title {
+        font-size: 15px;
+      }
+      .field {
+        font-size: 13px;
+        margin: 15px
+      }
+      .form-control {
+        padding: 0 -10px;
+        font-size: 13px;
+      }
+      .actions {
+        font-size: 7px;
+        margin: 0 15px 15px 15px;
+        .submit {
+          padding: 3px 10px;
+        }
+        .login-link {
+          font-size: 13px;
+        }
+      }
+      .password-wrapper {
+        .password-info-label {
+          font-size: 13px;
+        }
+        .field {
+          margin: 15px;
+          margin-top: 8px;
+          width: calc(100vw - 70px);
+          .password-field {
+            display: block;
+            justify-content: unset;
+            width: 100%;
+            .password-form-control {
+              max-width: 100%;
+              margin-bottom: 8px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
