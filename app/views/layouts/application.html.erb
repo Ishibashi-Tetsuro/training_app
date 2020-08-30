@@ -13,9 +13,10 @@
 
   <body>
     <%= javascript_include_tag 'style/header.js' %>
-    <% if notice.present? || alert.present? %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+    <% if notice.present? %>
+      <p class="flash"><%= notice %></p>
+    <% elsif alert.present? %>
+      <p class="flash"><%= alert %></p>
     <% end %>
     <div class="wrapper">
       <div class="header">
