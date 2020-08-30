@@ -31,7 +31,8 @@
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "list list-border" %></li>
           <% else %>
             <li><%= link_to "新規登録", new_user_registration_path, class: "list" %></li>
-            <li><%= link_to "ログイン", new_user_session_path, class: "list list-border" %></li>
+            <li><%= link_to "ログイン", new_user_session_path, class: "list" %></li>
+            <li><%= link_to "テストユーザーでログイン", users_guest_sign_in_path, method: :post, class: "list list-border" %></li>
           <% end %>
         </ul>
         <nav class="sp-nav">
