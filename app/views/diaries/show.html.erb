@@ -1,27 +1,71 @@
-<h1>日記詳細</h1>
-<div>
-  <%= @diary.content %>
-  <%= @diary.created_at %>
-  <div class="">
-    <% if @diary.image? %>
-      <%= image_tag @diary.image_url(:thumb400) %>
-    <% end %>
+<%= javascript_include_tag 'diary/edit.js' %>
+<div class="user-content show-diary">
+  <div class="show_wrapper">
+    <div class="content_show">
+        <div class="content">
+
+          <div class="diary-title">
+            <%= link_to user_path(@diary.user.id), class: "link" do %>
+              <div class="diary_user">
+                <div class="user_icon">
+                  <% if @diary.user.image? %>
+                    <%= image_tag @diary.user.image_url(:thumb30), class: "user_icon_tag" %>
+                  <% else %>
+                    <%= image_tag 'default.png', :size =>'30x30', class: "user_icon_tag" %>
+                  <% end %>
+                  <span class="user_name">
+                    <%= @diary.user.name %>
+                  </span>
+                </div>
+              </div>
+            <% end %>
+            <% if user_signed_in? && current_user.id == @diary.user_id %>
+              <div class="diary-edit-menu">
+                <i class="fas fa-ellipsis-h color"></i>
+              </div>
+              <div class="edit-menu">
+                <li><%= link_to "編集", edit_diary_path, class: "link" %></li>
+                <li><%= link_to "削除", diary_path(@diary), method: :delete, class: "link" %></li>
+              </div>
+            <% end %>
+          </div>
+
+
+          <%= link_to diary_path(@diary), class: "link" do %>
+            <img src="<%= @diary.image %>" class="diary_image" alt="日記画像">
+            <li class="diary_content"><%= @diary.content %></li>
+          <% end %>
+          <div class="diary_info">
+            <div class="like-user">
+              <div class="diary_like">
+                <i class="fa fa-heart heart_red" aria-hidden="true"></i>
+                <%= @diary.likes.count %>
+                <% if current_user.already_liked?(@diary) %>
+                  <%= button_to 'いいねを取り消す', diary_like_path(@diary), method: :delete, class: "like-button" %>
+                <% else %>
+                  <%= button_to 'いいね', diary_likes_path(@diary), class: "like-button" %>
+                <% end %>
+              </div>
+              <div class="diary-like-users">
+                <% @diary.liked_users.each do |user| %>
+                  <div class="diary-like-user">
+                    <%= link_to user_path(user), class: "link" do %>
+                      <% if @diary.user.image? %>
+                        <%= image_tag @diary.user.image_url(:thumb20), class: "user_icon_tag" %>
+                      <% else %>
+                        <%= image_tag 'default.png', :size =>'20x20', class: "user_icon_tag" %>
+                      <% end %>
+                    <% end %>
+                    <%= user.name %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <div class="diary_day">
+              <%= l @diary.created_at %>
+            </div>
+          </div>
+        </div>
+    </div>
   </div>
-  <h3>いいね件数: <%= @diary.likes.count %></h3>
-  <% if current_user.already_liked?(@diary) %>
-    <%= button_to 'いいねを取り消す', diary_like_path(@diary), method: :delete %>
-  <% else %>
-    <%= button_to 'いいね', diary_likes_path(@diary) %>
-  <% end %>
-</div>
-<h2>いいねしたユーザー</h2>
-<% @diary.liked_users.each do |user| %>
-  <li><%= user.email %></li>
-<% end %>
-<% if user_signed_in? && current_user.id == @diary.user_id %>
-  <%= link_to "日記を編集する", edit_diary_path %>
-  <%= link_to "日記を削除する", diary_path(@diary), method: :delete %>
-<% end %>
-<div class="">
-  <%= link_to "戻る", :back %>
 </div>
