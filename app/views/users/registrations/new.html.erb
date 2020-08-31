@@ -1,10 +1,18 @@
+<%= javascript_include_tag 'style/form.height.js' %>
 <div class="form-wrapper">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-for"}) do |f| %>
     <h2 class="form-title">アカウントの作成</h2>
     <div class="sign-up">
+
+      <div class="field">
+        <%= f.label :image %><br/>
+        <%= f.file_field :image, class: "form-control", accept: 'image/jpeg,image/gif,image/png' %>
+        <%= render "users/shared/error_message", model: :image %>
+      </div>
+
       <div class="field">
         <%= f.label :name, "ユーザー名（必須）" %><br />
-        <%= f.text_field :name, class: "form-control", autofocus: true,
+        <%= f.text_field :name, class: "form-control",
             autocomplete: "name", placeholder: "15文字以下で入力してください" %>
         <%= render "users/shared/error_message", model: :name %>
       </div>
@@ -31,12 +39,6 @@
           <%= render "users/shared/error_message", model: :password %>
           <%= render "users/shared/error_message", model: :password_confirmation %>
         </div>
-      </div>
-
-      <div class="field">
-        <%= f.label :image %><br/>
-        <%= f.file_field :image, class: "form-control", accept: 'image/jpeg,image/gif,image/png' %>
-        <%= render "users/shared/error_message", model: :image %>
       </div>
 
       <div class="actions">
