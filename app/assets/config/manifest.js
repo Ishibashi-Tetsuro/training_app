@@ -4,3 +4,4 @@
 //= link style/header.js
 //= link style/form.height.js
 //= link diary/edit.js
+//= link diary/height.js
