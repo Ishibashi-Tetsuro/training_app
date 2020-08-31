@@ -1,43 +1,62 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%= javascript_include_tag 'style/form.height.js' %>
+<div class="form-wrapper">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: :"form-for" }) do |f| %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+    <h2 class="form-title">ユーザー情報編集</h2>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, class: "form-control" %>
-  </div>
+    <div class="field">
+      <%= f.label :image %><br/>
+      <%= f.file_field :image, class: "form-control", accept: 'image/jpeg,image/gif,image/png', autocomplete: "image" %>
+      <%= render "users/shared/error_message", model: :image %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="edit-user">
+      <div class="field">
+        <%= f.label :name, "ユーザー名（必須）" %><br />
+        <%= f.text_field :name, class: "form-control",
+            autocomplete: "name", placeholder: "15文字以下で入力してください" %>
+        <%= render "users/shared/error_message", model: :name %>
+      </div>
+    </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+    <div class="field">
+      <%= f.label :email, "メールアドレス（必須）" %><br />
+      <%= f.email_field :email, class: "form-control", autocomplete: "email" %>
+      <%= render "users/shared/error_message", model: :email %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="password-wrapper">
+      <div class="password-info-label">
+        <%= "新しいパスワード（必須）" %><span>※半角6~12文字英大文字・小文字・数字を含む<span>
+      </div>
+      <div class="field">
+        <div class="password-field">
+          <%= f.label :password, {class: "password-label"} %>
+          <%= f.password_field :password, class: "form-control password-form-control",
+              autocomplete: "new-password", placeholder: "パスワード" %>
+          <%= f.label :password_confirmation, {class: "password-label"} %>
+          <%= f.password_field :password_confirmation, class: "form-control password-form-control",
+              autocomplete: "new-password", placeholder: "確認用" %>
+        </div>
+        <%= render "users/shared/error_message", model: :password %>
+        <%= render "users/shared/error_message", model: :password_confirmation %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :current_password, "現在のパスワード（必須）" %><br />
+      <%= f.password_field :current_password, class: "form-control", autocomplete: "current-password" %>
+      <%= render "users/shared/error_message", model: :"current-password" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-<%= link_to "Back", :back %>
+    <div class="actions">
+      <%= link_to "戻る", :back, class: "login-link" %>
+      <%= f.submit "更新", class: "btn btn-primary submit" %>
+    </div>
+
+  <% end %>
+</div>
