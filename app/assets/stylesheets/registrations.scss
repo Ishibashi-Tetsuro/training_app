@@ -8,6 +8,7 @@
     border-radius: 5px;
     font-size: 15px;
     width: 400px;
+
     .form-title {
       margin: 20px;
       font-size: 20px;
@@ -20,6 +21,11 @@
       border-radius: 5px;
       padding: 5px;
       width: 100%;
+    }
+    .form-control::placeholder {
+      font-size: 10px;
+      color: lightgrey;
+      padding-left: 10px;
     }
     .password-wrapper {
       .password-info-label {
@@ -50,6 +56,8 @@
     }
     .error_explanation {
       margin-bottom: 0;
+      padding-left: 5px;
+      font-size: 15px;
       li {
         list-style: none;
         color: #D93025;
@@ -62,16 +70,22 @@
       }
     }
     .actions {
-      margin: 0 20px 20px 20px;
+      margin: 30px 20px 30px 20px;
       position: relative;
       .submit {
-        padding: 6px 25px;
+        position: absolute;
+        right: 10%;
+        top: 50%;
+        transform: translate(-10%, -50%);
       }
       .login-link {
         position: absolute;
-        right: 0%;
+        left: 10%;
         top: 50%;
-        transform: translate(0%, -50%);
+        transform: translate(-10%, -50%);
+      }
+      .login-link:hover {
+        text-decoration: none;
       }
     }
     .remember-label {
@@ -102,10 +116,7 @@
       }
       .actions {
         font-size: 7px;
-        margin: 0 15px 15px 15px;
-        .submit {
-          padding: 3px 10px;
-        }
+        margin: 25px 15px 25px 15px;
         .login-link {
           font-size: 13px;
         }

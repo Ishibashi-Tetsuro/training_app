@@ -1,10 +1,11 @@
+<%= javascript_include_tag 'style/form.height.js' %>
 <div class="form-wrapper">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-for"}) do |f| %>
     <h2 class="form-title">ログイン</h2>
     <div class="log-in">
       <div class="field">
         <%= f.label :email, "メールアドレス（必須）" %><br />
-        <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, class: "form-control", autocomplete: "email" %>
       </div>
 
       <div class="password-wrapper">

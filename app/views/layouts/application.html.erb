@@ -25,7 +25,7 @@
         <ul class="lists">
           <% if user_signed_in? %>
             <li><%= link_to "エクササイズ", exercise_path(current_user.id), class: "list" %></li>
-            <li><%= link_to "日記一覧", diaries_path, class: "list" %></li>
+            <li><%= link_to "みんなの日記", diaries_path, class: "list" %></li>
             <li><%= link_to "スケジュール", schedules_path, class: "list" %></li>
             <li><%= link_to "マイページ", user_path(current_user.id), class: "list" %></li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "list list-border" %></li>
@@ -39,7 +39,7 @@
           <ul>
             <% if user_signed_in? %>
               <li><%= link_to "エクササイズ", exercise_path(current_user.id), class: "nav_list" %></li>
-              <li><%= link_to "日記一覧", diaries_path, class: "nav_list" %></li>
+              <li><%= link_to "みんなの日記", diaries_path, class: "nav_list" %></li>
               <li><%= link_to "スケジュール", schedules_path, class: "nav_list" %></li>
               <li><%= link_to "マイページ", user_path(current_user.id), class: "nav_list" %></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav_list" %></li>
