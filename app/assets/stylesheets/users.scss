@@ -290,6 +290,36 @@
     }
   }
 }
+.edit-diary {
+  width: 500px;
+  .content-label {
+    display: none;
+  }
+  .form-control {
+    margin: 10px 20px;
+    width: calc(100% - 40px);
+    height: 100px;
+  }
+  .content_show {
+    .content {
+      .diary_info {
+        display: block;
+        justify-content: normal;
+        margin: 0 20px 25px 20px;
+        position: relative;
+        .diary-submit {
+          position: absolute;
+          right: 0;
+        }
+        .diary_day {
+          position: absolute;
+          right: 0;
+          bottom: -60%;
+        }
+      }
+    }
+  }
+}
 table tr:nth-child(even) {
   background-color: #f5f5f5;
 }

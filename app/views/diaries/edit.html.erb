@@ -1,15 +1,54 @@
-<h1>日記編集</h1>
+<%= javascript_include_tag 'diary/edit.js' %>
+<%= javascript_include_tag 'diary/height.js' %>
+
 <%= form_with model: @diary, local: true, method: :patch do |f| %>
 <%= render 'layouts/error_messages', model: f.object %>
-  <div class="">
-    <%= f.label :content, "今日の日記" %>
-    <%= f.text_area :content %>
-  </div>
-  <div class="">
-    <%= f.label :image %>
-    <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
-  </div>
-  <div class="">
-    <%= f.submit "完了", class: "btn btn-primary" %>
+  <div class="user-content show-diary edit-diary">
+    <div class="show_wrapper">
+      <div class="content_show">
+          <div class="content">
+            <div class="diary-title">
+                <div class="diary_user">
+                  <div class="user_icon">
+                    <% if @diary.user.image? %>
+                      <%= image_tag @diary.user.image_url(:thumb30), class: "user_icon_tag" %>
+                    <% else %>
+                      <%= image_tag 'default.png', :size =>'30x30', class: "user_icon_tag" %>
+                    <% end %>
+                    <span class="user_name">
+                      <%= "1件の日記を編集中" %>
+                    </span>
+                  </div>
+                </div>
+              <% if user_signed_in? && current_user.id == @diary.user_id %>
+                <div class="diary-edit-menu">
+                  <i class="fas fa-ellipsis-h color"></i>
+                </div>
+                <div class="edit-menu">
+                  <li><%= link_to "削除", diary_path(@diary), method: :delete, class: "link" %></li>
+                </div>
+              <% end %>
+            </div>
+            <img src="<%= @diary.image %>" class="diary_image" alt="日記画像">
+            <div class="">
+              <%= f.label :image, {class: "content-label"} %>
+              <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
+            </div>
+            <div class="">
+              <%= f.label :content, "今日の日記", {class: "content-label"}  %>
+              <%= f.text_area :content, class: "form-control" %>
+            </div>
+            <div class="diary_info">
+              <div class="diary-submit">
+                <%= f.submit "更新", class: "btn btn-primary" %>
+              </div>
+              <div class="diary_day">
+                <%= l @diary.created_at %>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
+
