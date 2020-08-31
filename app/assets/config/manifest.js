@@ -2,3 +2,4 @@
 //= link_directory ../stylesheets .css
 //= link users/show.js
 //= link style/header.js
+  //= link style/form.height.js
