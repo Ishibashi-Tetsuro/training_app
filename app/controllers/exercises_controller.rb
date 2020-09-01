@@ -1,5 +1,5 @@
 class ExercisesController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :new, :create]
+  before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
@@ -35,6 +35,28 @@ class ExercisesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @exercise = Exercise.find(params[:id])
+  end
+
+  def update
+    @exercise = Exercise.find(params[:id])
+    if @exercise.update(exercise_params)
+      flash[:notice] = '編集が完了しました'
+      redirect_to exercise_path(current_user.id)
+    else
+      flash.now[:alert] = '入力を確認してください'
+      render :edit
+    end
+  end
+
+  def destroy
+    exercise = Exercise.find(params[:id])
+    exercise.destroy
+    flash[:notice] = '１件のエクササイズを削除しました'
+    redirect_to exercise_path(current_user.id)
   end
 
   private
