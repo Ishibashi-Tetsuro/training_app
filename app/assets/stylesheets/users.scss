@@ -589,6 +589,9 @@ table tr:nth-child(even) {
   .exercise-show {
     .show_wrapper {
       width: 100vw;
+      .edit-menu {
+        bottom: 18.5%;
+      }
     }
   }
   .new-exercise {
