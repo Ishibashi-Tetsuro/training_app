@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'exercise/edit.js' %>
 <div class="user-content today-exercise-show">
   <% if @today_exercise.empty? %>
     <div class="content exercise_content">
@@ -79,10 +80,13 @@
               </iframe>
             </div>
             <div class="exercise_edit">
-              <%= link_to edit_exercise_path(exercise), class: "link" do %>
-                <i class="fa fa-edit edit_icon"></i>
-                <%= "編集" %>
-              <% end %>
+              <div class="exercise-edit-menu">
+                <i class="fas fa-ellipsis-h color"></i>
+              </div>
+              <div class="edit-menu">
+                <li><%= link_to "編集", edit_exercise_path(exercise), class: "link" %></li>
+                <li><%= link_to "削除", exercise_path(exercise), method: :delete, class: "link" %></li>
+              </div>
             </div>
           </div>
         <% end %>
