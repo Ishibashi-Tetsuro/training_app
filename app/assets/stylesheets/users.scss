@@ -300,6 +300,24 @@
     width: calc(100% - 40px);
     height: 100px;
   }
+  .alert {
+    padding: 0 0 0 20px;
+  }
+  .error_explanation {
+    margin-bottom: 0;
+    padding-left: 5px;
+    font-size: 15px;
+    li {
+      list-style: none;
+      color: #D93025;
+    }
+    li:before {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      content: "\f06a";
+      color: #D93025;
+    }
+  }
   .content_show {
     .content {
       .diary_info {
@@ -320,6 +338,7 @@
     }
   }
 }
+
 table tr:nth-child(even) {
   background-color: #f5f5f5;
 }

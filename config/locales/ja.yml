@@ -25,16 +25,6 @@ ja:
     pm: "午後"
 
   activerecord:
-    errors:
-      format: "%{attribute}%{message}"
-      messages:
-        blank: "%{attribute}を入力してください"
-        confirmation: "確認用%{attribute}と%{attribute}が一致しません"
-        too_short: "%{attribute}は%{count}文字以上に設定して下さい。"
-        too_long: "%{attribute}は%{count}文字以内で入力してください"
-        taken: "すでに使用されている%{attribute}です"
-        record_invalid: "バリデーションに失敗しました %{errors}"
-
     models:
       diary: 日記
       schedule: スケジュール
@@ -50,3 +40,23 @@ ja:
       user:
         name: ユーザー名
         image: アイコン画像
+    errors:
+      models:
+        user:
+          format: "%{message}"
+          blank: "%{attribute}を入力してください"
+          confirmation: "確認用%{attribute}と%{attribute}が一致しません"
+          too_short: "%{attribute}は%{count}文字以上に設定して下さい。"
+          too_long: "%{attribute}は%{count}文字以内で入力してください"
+          taken: "すでに使用されている%{attribute}です"
+          record_invalid: "バリデーションに失敗しました %{errors}"
+          max_size_error: "画像は5MB以下にする必要があります"
+        diary:
+          attributes:
+            content:
+              format: "%{message}"
+              blank: "日記が空欄です"
+      messages:
+        max_size_error: "は5MB以下にする必要があります"
+
+

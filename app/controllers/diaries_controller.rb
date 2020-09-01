@@ -21,7 +21,7 @@ class DiariesController < ApplicationController
       flash[:notice] = '投稿が完了しました'
       redirect_to diaries_path
     else
-      flash.now[:alert] = '入力を確認して下さい'
+      flash.now[:alert] = '入力を確認してください'
       render :new
     end
   end
@@ -36,7 +36,7 @@ class DiariesController < ApplicationController
       flash[:notice] = '編集が完了しました'
       redirect_to diary_path(@diary)
     else
-      flash.now[:alert] = '画像の形式が不正な形式です'
+      flash.now[:alert] = '入力を確認してください'
       render :edit
     end
   end

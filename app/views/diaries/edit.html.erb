@@ -2,7 +2,6 @@
 <%= javascript_include_tag 'diary/height.js' %>
 
 <%= form_with model: @diary, local: true, method: :patch do |f| %>
-<%= render 'layouts/error_messages', model: f.object %>
   <div class="user-content show-diary edit-diary">
     <div class="show_wrapper">
       <div class="content_show">
@@ -38,6 +37,7 @@
               <%= f.label :content, "今日の日記", {class: "content-label"}  %>
               <%= f.text_area :content, class: "form-control" %>
             </div>
+            <%= render 'layouts/error_messages', model: @diary %>
             <div class="diary_info">
               <div class="diary-submit">
                 <%= f.submit "更新", class: "btn btn-primary" %>
