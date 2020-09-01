@@ -5,3 +5,5 @@
 //= link style/form.height.js
 //= link diary/edit.js
 //= link diary/height.js
+//= link exercise/edit.js
+
