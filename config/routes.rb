@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :diaries, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :likes, only: [:create, :destroy]
   end
-  resources :exercises, only:[:new, :create, :show, :index, :edit]
+  resources :exercises, only:[:new, :create, :show, :index, :edit, :update, :destroy]
   resources :schedules, only: [:new, :create, :index, :edit, :update]
   resources :counts, only: [:create, :update, :show]
   root 'exercises#index'
