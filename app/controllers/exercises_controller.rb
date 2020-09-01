@@ -6,19 +6,21 @@ class ExercisesController < ApplicationController
   end
 
   def show
-    @count = Count.find_by(user_id: current_user.id)
-    @schedules = Schedule.where(user_id: current_user.id, training_date: Date.today)
+    @user = current_user
+    @count = Count.find_by(user_id: @user)
+    @schedules = Schedule.where(user_id: @user, training_date: Date.today)
     if @schedules.empty?
       @today_exercise = []
     elsif @schedules[0][:shape] == "不調"
       @today_exercise = Exercise.where(part: @schedules[0][:part],level: 1, user_id: current_user.id).order("RAND()").limit(1)
     else
       @today_exercise = Exercise.where(
-                          part: @schedules[0][:part],level: 3, user_id: current_user.id).
+                          part: @schedules[0][:part],level: 3, user_id: @user).
                       or(Exercise.where(
-                          part: @schedules[0][:part],level: 2, user_id: current_user.id )).
+                          part: @schedules[0][:part],level: 2, user_id: @user )).
                       order("RAND()").limit(1)
     end
+    @exercises = Exercise.where(user_id: @user)
   end
 
   def new
