@@ -1,26 +1,103 @@
-<h1>Today Exercise</h1>
-<% if @today_exercise.empty? %>
-  <div>
-  本日登録されたエクササイズはありません
-  </div>
-<% else %>
-  <div>
-    Part : <%= @today_exercise[0][:part] %>
-  </div>
-  <div>
-    Level : <%= @today_exercise[0][:level] %>
-  </div>
-  <div>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @today_exercise[0][:url].last(11) %>"
-            frameborder="0" allow="accelerometer; autoplay; encrypted-media;
-            gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-  </div>
-<% end %>
+<%= javascript_include_tag 'exercise/edit.js' %>
+<div class="user-content today-exercise-show">
+  <% if @today_exercise.empty? %>
+    <div class="content exercise_content">
+      <div class="exercise_info today-exercise-nothing">
+        <%= "本日登録されたエクササイズはありません" %>
+      </div>
+      <div class="iframe_wrap">
+        <iframe width="400" height="225" src="https://www.youtube.com/embed/"
+                frameborder="0" allow="accelerometer; autoplay; encrypted-media;
+                gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="exercise-finish">
+        <div class="exercise_edit">
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <h1>今日のトレーニングはこちら</h1>
+    <div class="content exercise_content">
+      <div class="exercise_info">
+        <span class="level">
+          <% @today_exercise[0][:level].times do %>
+            <i class="fas fa-dumbbell"></i>
+          <% end %>
+        </span>
+        <%= @today_exercise[0][:part] %>
+      </div>
+      <div class="iframe_wrap">
+        <iframe width="400" height="225" src="https://www.youtube.com/embed/<%= @today_exercise[0][:url].last(11) %>"
+                frameborder="0" allow="accelerometer; autoplay; encrypted-media;
+                gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="exercise-finish">
+        <% if @count.nil? %>
+          <%= link_to "トレーニング完了", counts_path, method: :post, class: "link btn btn-warning" %>
+        <% else %>
+          <%= link_to "トレーニング完了", count_path(@count), method: :patch, class: "link btn btn-warning" %>
+        <% end %>
 
-<%= link_to "新規エクササイズ登録はこちらから", new_exercise_path, class: "" %>
-<% if @count.nil? %>
-  <%= link_to "トレーニング完了", counts_path, method: :post %>
-<% else %>
-  <%= link_to "トレーニング完了", count_path(@count), method: :patch %>
-<% end %>
+        <div class="exercise_edit">
+          <%= link_to edit_exercise_path(@today_exercise[0][:id]), class: "link" do %>
+            <i class="fa fa-edit edit_icon"></i>
+            <%= "編集" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="user-content exercise-show">
+  <div class="show_wrapper other_show">
+    <div class="title_style">
+      <h2 class="title"><i class="fas fa-angle-right space"></i>自分のエクササイズ一覧</h2>
+      <%= link_to new_exercise_path, class: "link" do %>
+        <i class="fa fa-edit" aria-hidden="true"></i>
+        <span class="pc_character">エクササイズを追加</span>
+        <span class="smart_character">追加</span>
+      <% end %>
+    </div>
+    <div class="content_hidden">
+      <div class="content_show">
+        <% @exercises.each do |exercise| %>
+          <div class="content exercise_content">
+            <div class="exercise_info">
+              <span class="level">
+                <% exercise.level.times do %>
+                  <i class="fas fa-dumbbell"></i>
+                <% end %>
+              </span>
+              <%= exercise.part %>
+            </div>
+            <div class="iframe_wrap">
+              <iframe width="400" height="225" src="https://www.youtube.com/embed/<%= exercise.url.last(11) %>"
+                      frameborder="0" allow="accelerometer; autoplay; encrypted-media;
+                      gyroscope; picture-in-picture" allowfullscreen>
+              </iframe>
+            </div>
+            <div class="exercise_edit">
+              <div class="exercise-edit-menu">
+                <i class="fas fa-ellipsis-h color"></i>
+              </div>
+              <div class="edit-menu">
+                <li><%= link_to "編集", edit_exercise_path(exercise), class: "link" %></li>
+                <li><%= link_to "削除", exercise_path(exercise), method: :delete, class: "link" %></li>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="exercise-finish">
+        <% if @count.nil? %>
+          <%= link_to "トレーニング完了", counts_path, method: :post, class: "link btn btn-warning" %>
+        <% else %>
+          <%= link_to "トレーニング完了", count_path(@count), method: :patch, class: "link btn btn-warning" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

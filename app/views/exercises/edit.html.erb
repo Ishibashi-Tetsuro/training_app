@@ -1,6 +1,6 @@
-<%= form_with model: @exercise, local: true, method: :post do |f| %>
+<%= form_with model: @exercise, local: true, method: :put do |f| %>
   <div class="user-content today-exercise-show new-exercise">
-    <h1>新しいエクササイズ</h1>
+    <h1>このエクササイズを編集</h1>
     <%= render 'layouts/error_messages', model: f.object %>
     <div class="content exercise_content">
       <div class="exercise_info">
@@ -10,7 +10,7 @@
         <%= f.select :part, ["二の腕", "お腹", "胸", "足"], {}, {class: "form-control"} %>
       </div>
       <div class="iframe_wrap">
-        <iframe width="400" height="225" src="https://www.youtube.com/embed/"
+        <iframe width="400" height="225" src="https://www.youtube.com/embed/<%= @exercise.url.last(11) %>"
                 frameborder="0" allow="accelerometer; autoplay; encrypted-media;
                 gyroscope; picture-in-picture" allowfullscreen>
         </iframe>
@@ -18,7 +18,7 @@
         <%= f.text_field :url, class: "form-control", placeholder: "YouTubeのURLを入力してください" %>
       </div>
       <div class="exercise-finish">
-        <%= f.submit 'このエクササイズを登録', class: 'btn btn-warning' %>
+        <%= f.submit '更新する', class: 'btn btn-warning' %>
       </div>
     </div>
   </div>
