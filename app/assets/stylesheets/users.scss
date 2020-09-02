@@ -470,6 +470,58 @@
 table tr:nth-child(even) {
   background-color: #f5f5f5;
 }
+.schedule-index {
+  .show_wrapper {
+    width: 500px;
+    margin: 0 auto;
+    padding-bottom: 0;
+  }
+  .space {
+    display: none;
+  }
+  .schedule_content {
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    margin-top: 30px;
+  }
+  .smart-character {
+    display: none;
+  }
+}
+.schedule-edit {
+  h1 {
+    font-size: 20px;
+  }
+  .schedule_show {
+    .schedule_content {
+      width: 100%;
+      .schedule_day {
+        padding: 0;
+        width: calc(100% / 4);
+        margin: 0 auto;
+        .form-control {
+          width: 80%;
+          margin: 0 auto;
+        }
+      }
+      .day {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        .form-day {
+          width: 100%;
+          padding: 0 30px;
+          position: static;
+          left: 0;
+          transform: translate(0%, 0%);
+        }
+      }
+    }
+  }
+}
 
 @media screen and (max-width: 480px) {
   .user_wrapper {
@@ -576,6 +628,21 @@ table tr:nth-child(even) {
       }
     }
   }
+  .schedule-index {
+    margin: 0;
+    .show_wrapper {
+      width: 100vw;
+    }
+    .pc-character {
+      display: none;
+    }
+    .smart-character {
+      display: block;
+    }
+    .schedule_content {
+      .schedule_day {
+        padding: 8px 0;
+        width: calc(100vw / 6);
   .today-exercise-show {
     h1 {
       width: 100vw;

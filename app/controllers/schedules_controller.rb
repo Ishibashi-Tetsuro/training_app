@@ -22,7 +22,7 @@ class SchedulesController < ApplicationController
   end
 
   def edit
-    @schedules = Schedule.where(user_id: current_user.id).order(training_date: :asc)
+    @schedule = Schedule.find(params[:id])
   end
 
   def update

@@ -1,12 +1,33 @@
-<h1>スケジュール一覧</h1>
-<%= link_to "新規スケジュール設定", new_schedule_path, class: "" %>
-<% @schedules.each do |schedule| %>
-  <div>
-  <%= link_to edit_schedule_path(schedule), class: '' do %>
-    <%= schedule.training_date %>
-    <%= schedule.part %>
-    <%= schedule.work %>
-    <%= schedule.shape %>
-  <% end %>
+<div class="user-content schedule-index">
+  <div class="show_wrapper other_show schedule_show">
+    <div class="title_style">
+      <h2 class="title"><i class="fas fa-angle-right space"></i>スケジュール管理</h2>
+      <%= link_to new_schedule_path, class: "link" do %>
+        <i class="fa fa-edit" aria-hidden="true"></i>
+        <span class="pc_character">スケジュール追加</span>
+        <span class="smart_character">追加</span>
+      <% end %>
+    </div>
+    <table class="schedule_content">
+      <tr>
+        <th class="schedule_day">日付</th>
+        <th class="schedule_day">部位</th>
+        <th class="schedule_day">仕事</th>
+        <th class="schedule_day">体調</th>
+        <th class="schedule_day">編集</th>
+        <th class="schedule_day">削除</th>
+      </tr>
+      <% @schedules.each do |schedule| %>
+        <tr>
+          <td class="schedule_day pc-character"><%= schedule.training_date %></td>
+          <td class="schedule_day smart-character"><%= l schedule.training_date, format: :short %></td>
+          <td class="schedule_day"><%= schedule.part %></td>
+          <td class="schedule_day"><%= schedule.work %></td>
+          <td class="schedule_day"><%= schedule.shape %></td>
+          <td class="schedule_day"><%= link_to "編集", edit_schedule_path(schedule), class: "link" %></td>
+          <td class="schedule_day"><%= link_to "削除", schedule_path(schedule), method: :delete, class: "link" %></td>
+        </tr>
+      <% end %>
+    </table>
   </div>
-<% end %>
+</div>
