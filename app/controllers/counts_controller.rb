@@ -4,25 +4,25 @@ class CountsController < ApplicationController
   def show
     @count = Count.find_by(user_id: current_user.id)
     if @count.day >= 15
-      level = 6
+      @level = 6
       @level_up_day = 0
     elsif @count.day >= 10
-      level = 5
+      @level = 5
       @level_up_day = 15 - @count.day
     elsif @count.day >= 6
-      level = 4
+      @level = 4
       @level_up_day = 10 - @count.day
     elsif @count.day >= 3
-      level = 3
+      @level = 3
       @level_up_day = 6 - @count.day
     elsif @count.day >= 1
-      level = 2
+      @level = 2
       @level_up_day = 3 - @count.day
     else
-      level = 1
+      @level = 1
       @level_up_day = 1 - @count.day
     end
-    @character = Character.find(level)
+    @character = Character.find(@level)
     @diary = Diary.new
   end
 
