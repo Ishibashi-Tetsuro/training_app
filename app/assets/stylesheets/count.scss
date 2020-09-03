@@ -1,0 +1,27 @@
+.character-show {
+  background-color: white;
+  border: solid 1px lightgray;
+  border-radius: 5px;
+  width: 400px;
+  margin: 0 auto 30px auto;
+  color: #433f3f;
+  text-align: center;
+  padding-top: 10px;
+  p {
+    font-size: 25px;
+    margin: 0;
+  }
+  .character {
+    display: flex;
+    justify-content: center;
+  }
+  .level_up_day {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .character-show {
+    width: 100vw;
+  }
+}
