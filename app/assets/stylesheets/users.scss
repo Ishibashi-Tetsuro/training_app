@@ -24,6 +24,9 @@
       .user_image {
         padding-bottom: 5px;
         text-align: center;
+        .icon-image {
+          border-radius: 50%;
+        }
       }
       .user_info {
         .user_name {
@@ -127,6 +130,7 @@
       align-items: center;
       .user_icon_tag {
         vertical-align: middle;
+        border-radius: 50%;
       }
       .user_name {
         margin-left: 10px;
@@ -284,6 +288,9 @@
           margin-top: 10px;
           .diary-like-user {
             margin-right: 15px;
+            .user_icon_tag {
+              border-radius: 50%;
+            }
           }
         }
       }
