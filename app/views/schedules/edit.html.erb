@@ -12,7 +12,7 @@
           <th class="schedule_day">仕事</th>
           <th class="schedule_day">体調</th>
         </tr>
-        <tr>
+        <tr class="each-form">
           <td class="schedule_day day">
             <%= raw sprintf(
               f.date_select(
@@ -25,7 +25,7 @@
                 },
                 {class: 'form-control form-day' }
                 ),
-                '月') + '日' %>
+                '/') %>
           </td>
           <td class="schedule_day">
             <%= f.text_field :user_id, value: current_user.id, class: 'user_id' %>

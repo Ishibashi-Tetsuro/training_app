@@ -1,52 +1,57 @@
-<%= form_for(@schedule, url: schedules_path, local: true, method: :post) do |fb| %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>実施予定日</th>
-        <th>エクササイズ</th>
-        <th>仕事</th>
-        <th>体調</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% i = 0 %>
-      <%= fb.fields_for :schedules, local: true do |f| %>
-      <%= render 'layouts/error_messages', model: f.object %>
-        <tr class="item">
-          <td>
-            <% i += 1 %>
-            <%= raw sprintf(
-              f.date_select(
-                  :training_date,
-                  {
-                    :discard_year => true,
-                    default: Date.today + i.day,
-                    date_separator: '%s',
-                    datetime_separator: '%s',
-                  },
-                  {class: 'form-control' }
-                  ),
-                  '月') + '日'
-              %>
-              <%= f.text_field :user_id, value: current_user.id, class: 'user_id' %>
-          </td>
-          <td class="text-center">
-            <%= f.select :part, ["二の腕", "お腹", "胸", "足"],
-              {include_blank: "---"} %>
-          </td>
-          <td class="text-center">
-            <%= f.select :work, ["早番", "遅番", "休み"],
-              {include_blank: "---"} %>
-          </td>
-          <td class="text-center">
-            <%= f.select :shape, ["良い", "不調"],
-              {include_blank: "---"} %>
-          </td>
-        </tr>
+
+  <div class="user-content schedule-index scheudle-edit schedule-new">
+    <div class="show_wrapper other_show schedule_show">
+      <%= form_for(@schedule, url: schedules_path, local: true, method: :post) do |fb| %>
+        <table class="schedule_content">
+          <thead>
+            <tr>
+              <th class="schedule_day">日付</th>
+              <th class="schedule_day">部位</th>
+              <th class="schedule_day">仕事</th>
+              <th class="schedule_day">体調</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% i = 0 %>
+            <%= fb.fields_for :schedules, local: true do |f| %>
+            <%= render 'layouts/error_messages', model: f.object %>
+              <tr class="each-form">
+                <td class="schedule_day day">
+                  <% i += 1 %>
+                  <%= raw sprintf(
+                    f.date_select(
+                        :training_date,
+                        {
+                          :discard_year => true,
+                          default: Date.today + i.day,
+                          date_separator: '%s',
+                          datetime_separator: '%s',
+                        },
+                        {class: 'form-control form-day' }
+                        ),
+                        '月') + '日'
+                    %>
+                    <%= f.text_field :user_id, value: current_user.id, class: 'user_id' %>
+                </td>
+                <td class="schedule_day">
+                  <%= f.select :part, ["二の腕", "お腹", "胸", "足"],
+                    {}, {class: 'form-control' } %>
+                </td>
+                <td class="schedule_day">
+                  <%= f.select :work, ["早番", "遅番", "休み"],
+                    {}, {class: 'form-control' } %>
+                </td>
+                <td class="schedule_day">
+                  <%= f.select :shape, ["良い", "不調"],
+                    {}, {class: 'form-control' } %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <div>
+          <%= fb.submit '登録', class: 'btn btn-primary' %>
+        </div>
       <% end %>
-    </tbody>
-  </table>
-  <div>
-    <%= fb.submit '登録', class: 'btn btn-primary' %>
+    </div>
   </div>
-<% end %>
