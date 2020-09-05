@@ -26,6 +26,7 @@
         text-align: center;
         .icon-image {
           border-radius: 50%;
+          border: 1px solid lightgray;
         }
       }
       .user_info {
@@ -131,6 +132,7 @@
       .user_icon_tag {
         vertical-align: middle;
         border-radius: 50%;
+        border: 1px solid lightgray;
       }
       .user_name {
         margin-left: 10px;
@@ -255,7 +257,6 @@
           border-radius: 5px 0 5px 5px;
           box-shadow: -1px 1px 3px 0.1px grey ;
           li {
-            // padding: 15px 20px;
             .link {
               display: block;
               padding: 10px 30px;
@@ -290,6 +291,7 @@
             margin-right: 15px;
             .user_icon_tag {
               border-radius: 50%;
+              border: 1px solid lightgray;
             }
           }
         }
