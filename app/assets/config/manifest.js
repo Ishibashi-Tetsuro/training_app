@@ -6,4 +6,5 @@
 //= link diary/edit.js
 //= link diary/height.js
 //= link exercise/edit.js
+//= link style/image_preview.js
 
