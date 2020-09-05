@@ -1,2 +1,98 @@
-<h1>Exercises#index</h1>
-<p>Find me in app/views/exercises/index.html.erb</p>
+<%= javascript_include_tag 'exercise/edit.js' %>
+<div class="banner">
+  <%= image_tag 'バナー画像.png', class: "banner-image" %>
+</div>
+
+<div class="banner-index">
+  <div class="user-content index-diary">
+    <div class="show_wrapper">
+      <div class="title_style">
+        <h2 class="title"><i class="fas fa-angle-right space"></i>みんなの日記</h2>
+          <%= link_to new_diary_path, class: "link" do %>
+            <i class="fa fa-edit" aria-hidden="true"></i>
+            <span class="pc_character">日記を投稿</span>
+            <span class="smart_character">投稿</span>
+          <% end %>
+      </div>
+      <div class="content_show">
+        <% @diaries.each do |diary| %>
+          <div class="content">
+            <%= link_to user_path(diary.user.id), class: "link" do %>
+              <div class="diary_user">
+                <div class="user_icon">
+                  <% if diary.user.image? %>
+                    <%= image_tag diary.user.image_url(:thumb30), class: "user_icon_tag" %>
+                  <% else %>
+                    <%= image_tag 'user_image.png', :size =>'30x30', class: "user_icon_tag" %>
+                  <% end %>
+                </div>
+                <div class="user_name">
+                  <%= diary.user.name %>
+                </div>
+              </div>
+            <% end %>
+            <%= link_to diary_path(diary), class: "link" do %>
+              <img src="<%= diary.image %>" class="diary_image" alt="日記画像">
+              <li class="diary_content"><%= diary.content %></li>
+            <% end %>
+            <div class="diary_info">
+              <div class="diary_like">
+                <i class="fa fa-heart heart_red" aria-hidden="true"></i>
+                <%= diary.likes.count %>
+              </div>
+              <div class="diary_day">
+                <%= l diary.created_at %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <%= link_to "他の日記もみる", diaries_path, class: "link other-diary btn btn-warning" %>
+    </div>
+  </div>
+
+  <div class="user-content exercise-show margin-top">
+    <div class="show_wrapper other_show">
+      <div class="title_style">
+        <h2 class="title"><i class="fas fa-angle-right space"></i>みんなのエクササイズ</h2>
+        <%= link_to new_exercise_path, class: "link" do %>
+          <i class="fa fa-edit" aria-hidden="true"></i>
+          <span class="pc_character">エクササイズを追加</span>
+          <span class="smart_character">追加</span>
+        <% end %>
+      </div>
+      <div class="content_hidden">
+        <div class="content_show">
+          <% if @exercises.empty? %>
+            <p>まだ登録されたエクササイズはありません</p>
+          <% else %>
+            <% @exercises.each do |exercise| %>
+              <div class="content exercise_content">
+                <div class="exercise_info">
+                  <span class="level">
+                    <% exercise.level.times do %>
+                      <i class="fas fa-dumbbell"></i>
+                    <% end %>
+                  </span>
+                  <%= exercise.part %>
+                </div>
+                <div class="iframe_wrap">
+                  <iframe width="400" height="225" src="https://www.youtube.com/embed/<%= exercise.url.last(11) %>"
+                          frameborder="0" allow="accelerometer; autoplay; encrypted-media;
+                          gyroscope; picture-in-picture" allowfullscreen>
+                  </iframe>
+                </div>
+                <div class="exercise_edit">
+                  <div class="exercise-edit-menu">
+                  </div>
+                  <div class="edit-menu">
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
