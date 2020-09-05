@@ -1,5 +1,6 @@
 <%= javascript_include_tag 'diary/edit.js' %>
 <%= javascript_include_tag 'diary/height.js' %>
+<%= javascript_include_tag 'style/diary_preview.js' %>
 
 <%= form_with model: @diary, local: true, method: :patch do |f| %>
   <div class="user-content show-diary edit-diary">
@@ -7,18 +8,18 @@
       <div class="content_show">
           <div class="content">
             <div class="diary-title">
-                <div class="diary_user">
-                  <div class="user_icon">
-                    <% if @diary.user.image? %>
-                      <%= image_tag @diary.user.image_url(:thumb30), class: "user_icon_tag" %>
-                    <% else %>
-                      <%= image_tag 'default.png', :size =>'30x30', class: "user_icon_tag" %>
-                    <% end %>
-                    <span class="user_name">
-                      <%= "1件の日記を編集中" %>
-                    </span>
-                  </div>
+              <div class="diary_user">
+                <div class="user_icon">
+                  <% if @diary.user.image? %>
+                    <%= image_tag @diary.user.image_url(:thumb30), class: "user_icon_tag" %>
+                  <% else %>
+                    <%= image_tag 'user_image.png', :size =>'30x30', class: "user_icon_tag" %>
+                  <% end %>
+                  <span class="user_name">
+                    <%= "1件の日記を編集中" %>
+                  </span>
                 </div>
+              </div>
               <% if user_signed_in? && current_user.id == @diary.user_id %>
                 <div class="diary-edit-menu">
                   <i class="fas fa-ellipsis-h color"></i>
@@ -28,10 +29,16 @@
                 </div>
               <% end %>
             </div>
-            <img src="<%= @diary.image %>" class="diary_image" alt="日記画像">
+
+            <div class="prev-contents">
+              <div class="prev-content">
+                <%= image_tag "#{@diary.image}", class: "diary_image prev-image", onClick: "$('#upfile').click()" %>
+              </div>
+            </div>
+
             <div class="">
-              <%= f.label :image, {class: "content-label"} %>
-              <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
+              <%= f.label :image, {class: "content-label hidden_file"} %>
+              <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', id: 'upfile', class:"hidden_file" %>
             </div>
             <div class="">
               <%= f.label :content, "今日の日記", {class: "content-label"}  %>

@@ -1,12 +1,24 @@
 <%= javascript_include_tag 'style/form.height.js' %>
+<%= javascript_include_tag 'style/image_preview.js' %>
 <div class="form-wrapper">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: :"form-for" }) do |f| %>
 
     <h2 class="form-title">ユーザー情報編集</h2>
 
-    <div class="field">
-      <%= f.label :image %><br/>
-      <%= f.file_field :image, class: "form-control", accept: 'image/jpeg,image/gif,image/png', autocomplete: "image" %>
+    <div class="field file-field">
+      <%= f.label :image, {class: "hidden_file"} %><br/>
+      <%= f.file_field :image, id: "upfile", class: "form-control hidden_file", accept: 'image/jpeg,image/gif,image/png' %>
+      <div class="prev-contents">
+        <% if resource.image? %>
+          <div class="prev-content">
+            <%= image_tag resource.image_url(:thumb70), class: "prev-image", onClick:"$('#upfile').click()" %>
+          </div>
+        <% else %>
+          <div class="prev-content">
+            <%= image_tag 'user_image.png', :size =>'70x70', class: "prev-image", onClick:"$('#upfile').click()" %>
+          </div>
+        <% end %>
+      </div>
       <%= render "users/shared/error_message", model: :image %>
     </div>
 

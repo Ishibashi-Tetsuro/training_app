@@ -17,7 +17,7 @@
                 <% if diary.user.image? %>
                   <%= image_tag diary.user.image_url(:thumb30), class: "user_icon_tag" %>
                 <% else %>
-                  <%= image_tag 'default.png', :size =>'30x30', class: "user_icon_tag" %>
+                  <%= image_tag 'user_image.png', :size =>'30x30', class: "user_icon_tag" %>
                 <% end %>
               </div>
               <div class="user_name">

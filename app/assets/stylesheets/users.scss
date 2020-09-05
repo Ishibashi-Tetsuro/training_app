@@ -17,13 +17,17 @@
     margin: 0 30px;
     text-align: center;
     color: #433f3f;
-    height: 503px;
+    height: 490px;
     border-radius: 5px;
     .user_style {
       margin: 0 30px;
       .user_image {
         padding-bottom: 5px;
         text-align: center;
+        .icon-image {
+          border-radius: 50%;
+          border: 1px solid lightgray;
+        }
       }
       .user_info {
         .user_name {
@@ -35,7 +39,7 @@
           border: 1px solid lightgrey;
           border-radius: 5px;
           padding: 10px 0;
-          margin: 15px 0 20px 0;
+          margin: 5px 0 20px 0;
           .character_image_tag {
             vertical-align: middle;
           }
@@ -127,6 +131,8 @@
       align-items: center;
       .user_icon_tag {
         vertical-align: middle;
+        border-radius: 50%;
+        border: 1px solid lightgray;
       }
       .user_name {
         margin-left: 10px;
@@ -251,7 +257,6 @@
           border-radius: 5px 0 5px 5px;
           box-shadow: -1px 1px 3px 0.1px grey ;
           li {
-            // padding: 15px 20px;
             .link {
               display: block;
               padding: 10px 30px;
@@ -284,6 +289,10 @@
           margin-top: 10px;
           .diary-like-user {
             margin-right: 15px;
+            .user_icon_tag {
+              border-radius: 50%;
+              border: 1px solid lightgray;
+            }
           }
         }
       }
@@ -292,6 +301,17 @@
 }
 .edit-diary {
   width: 500px;
+  .prev-contents {
+    .prev-content:hover {
+      cursor: pointer;
+      background-color: gray;
+      opacity: 0.3;
+      transition: all 300ms 0s ease;
+    }
+  }
+  .hidden_file {
+    display: none;
+  }
   .content-label {
     display: none;
   }
