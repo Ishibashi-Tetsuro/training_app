@@ -11,7 +11,7 @@
                   <% if @diary.user.image? %>
                     <%= image_tag @diary.user.image_url(:thumb30), class: "user_icon_tag" %>
                   <% else %>
-                    <%= image_tag 'default.png', :size =>'30x30', class: "user_icon_tag" %>
+                    <%= image_tag 'user_image.png', :size =>'30x30', class: "user_icon_tag" %>
                   <% end %>
                   <span class="user_name">
                     <%= @diary.user.name %>
@@ -51,7 +51,7 @@
                       <% if @diary.user.image? %>
                         <%= image_tag @diary.user.image_url(:thumb20), class: "user_icon_tag" %>
                       <% else %>
-                        <%= image_tag 'default.png', :size =>'20x20', class: "user_icon_tag" %>
+                        <%= image_tag 'user_image.png', :size =>'20x20', class: "user_icon_tag" %>
                       <% end %>
                     <% end %>
                     <%= user.name %>
