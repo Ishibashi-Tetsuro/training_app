@@ -3,6 +3,8 @@ class ExercisesController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
+    @diaries = Diary.all.limit(4)
+    @exercises = Exercise.all
   end
 
   def show
