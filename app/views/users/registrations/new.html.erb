@@ -10,7 +10,7 @@
         <%= f.file_field :image, id: "upfile", class: "form-control hidden_file", accept: 'image/jpeg,image/gif,image/png' %>
         <div class="prev-contents">
           <div class="prev-content">
-            <%= image_tag 'default.png', :size =>'70x70', class: "prev-image", onClick:"$('#upfile').click()" %>
+            <%= image_tag 'user_image.png', :size =>'70x70', class: "prev-image", onClick:"$('#upfile').click()" %>
           </div>
         </div>
         <%= render "users/shared/error_message", model: :image %>
