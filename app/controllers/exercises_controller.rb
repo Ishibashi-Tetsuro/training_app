@@ -4,7 +4,8 @@ class ExercisesController < ApplicationController
 
   def index
     @diaries = Diary.all.limit(4)
-    @exercises = Exercise.all
+    @q = Exercise.ransack(params[:q])
+    @exercises = @q.result(distinct: true)
   end
 
   def show
