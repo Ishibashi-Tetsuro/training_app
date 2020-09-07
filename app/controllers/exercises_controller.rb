@@ -18,9 +18,9 @@ class ExercisesController < ApplicationController
       @today_exercise = Exercise.where(part: @schedules[0][:part],level: 1, user_id: current_user.id).order("RAND()").limit(1)
     else
       @today_exercise = Exercise.where(
-                          part: @schedules[0][:part],level: 3, user_id: @user).
-                      or(Exercise.where(
-                          part: @schedules[0][:part],level: 2, user_id: @user )).
+                        part: @schedules[0][:part],level: 3, user_id: @user).
+                        or(Exercise.where(
+                        part: @schedules[0][:part],level: 2, user_id: @user )).
                       order("RAND()").limit(1)
     end
     @exercises = Exercise.where(user_id: @user)
