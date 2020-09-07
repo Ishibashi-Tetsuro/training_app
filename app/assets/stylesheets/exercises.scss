@@ -1,27 +1,83 @@
 .banner {
-  display: flex;
-  justify-content: center;
   margin-bottom: 30px;
+  text-align: center;
   .banner-image {
-    width: 80%;
+    width: 60%;
+    margin-top: 30px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    box-shadow: 0 0 5px 2px lightgray;
+    text-align: center;
   }
+}
+
+.header-image {
+  background-image: image-url('header.jpg');
+  background-size: cover;
+  height: 70vh;
+  position: relative;
+  .header-word{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 50%;
+  transform: translate(0, -50%);
+  }
+  h1,p,h2,h3{
+    color: white;
+    font-family: 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+  }
+  h5 {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    color: white;
+    margin-bottom: 20px;
+  }
+}
+.header-image::before{
+  content: ' ';
+  background-color: rgba(0,0,0,.5);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 .margin-top {
   padding: 30px 0 0 0;
 }
-.banner-index {
-  .index-diary {
-    .show_wrapper {
-      .content_show {
-        .content {
+.search-exercise {
+  .today-exercise-show {
+    margin: 0 0 30px 0;
+    .content {
+      padding-top: 10px;
+      h1 {
+        margin: 0 auto;
+      }
+      .search-form {
+        display: flex;
+        justify-content: center;
+        .exercise_info {
+          padding: 0;
+          .form-control {
+            width: 100px;
+          }
         }
       }
     }
+  }
+}
+.btn-color {
+  color: white;
+  background-color: orange;
+}
+
+.banner-index {
+  .index-diary {
     .other-diary {
       width: 300px;
       text-align: center;
       display: block;
-      margin: 20px auto;
+      margin: 0 auto;
     }
   }
 }
@@ -34,4 +90,3 @@
     }
   }
 }
-
