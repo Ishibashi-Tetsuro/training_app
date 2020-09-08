@@ -29,7 +29,9 @@
             border-radius: 50%;
             justify-content: center;
             margin: 0 auto;
-            object-fit: cover
+            object-fit: cover;
+            width: 70px;
+            height: 70px;
           }
           .prev-image:hover {
             cursor: pointer;

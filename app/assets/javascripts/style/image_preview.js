@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function () {
+$(function () {
   $(function () {
     function buildHTML(image) {
       var html =
