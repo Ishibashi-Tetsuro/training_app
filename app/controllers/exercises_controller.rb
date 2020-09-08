@@ -3,7 +3,7 @@ class ExercisesController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @diaries = Diary.all.limit(4)
+    @diaries = Diary.all.limit(4).order(id: "DESC")
     @q = Exercise.ransack(params[:q])
     @exercises = @q.result(distinct: true)
   end

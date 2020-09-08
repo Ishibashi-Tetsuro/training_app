@@ -3,7 +3,7 @@ class DiariesController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @diaries = Diary.all
+    @diaries = Diary.all.order(id: "DESC")
   end
 
   def show
