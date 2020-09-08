@@ -149,13 +149,13 @@
             width: 100px;
           }
         }
+        .btn-color {
+          background-color: orange;
+          color: white;
+        }
       }
     }
   }
-}
-.btn-color {
-  color: white;
-  background-color: orange;
 }
 
 .banner-index {
@@ -165,6 +165,10 @@
       text-align: center;
       display: block;
       margin: 0 auto;
+    }
+    .btn-color {
+      background-color: orange;
+      color: white;
     }
   }
 }
