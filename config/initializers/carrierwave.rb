@@ -1,5 +1,9 @@
-if Rails.env.production?
-  CarrierWave.configure do |config|
+require 'carrierwave/storage/abstract'
+require 'carrierwave/storage/file'
+require 'carrierwave/storage/fog'
+
+CarrierWave.configure do |config|
+    config.storage :fog
     config.fog_provider = 'fog/aws'
     config.fog_credentials = {
       provider:              'AWS',
@@ -12,7 +16,7 @@ if Rails.env.production?
     }
 
     # 公開・非公開の切り替え
-    config.fog_public     = true
+    config.fog_public     = false
     # キャッシュの保存期間
     config.fog_attributes = { 'Cache-Control' => "max-age=#{365.day.to_i}" }
 
@@ -34,7 +38,6 @@ if Rails.env.production?
         config.asset_host = 'https://dev-home-gym-image-store.s3-ap-northeast-1.amazonaws.com'
     end
   end
-end
 
 # 日本語ファイル名の設定
 CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
