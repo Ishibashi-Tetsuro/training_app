@@ -405,6 +405,10 @@
       margin: 20px auto;
       display: flex;
       justify-content: center;
+      .link {
+        background-color: orange;
+        color: white;
+      }
     }
   }
   .title_style {
@@ -553,10 +557,14 @@ table tr:nth-child(even) {
         }
       }
     }
-    .btn-primary {
+    .btn-warning {
       position: relative;
       left: 80%;
       margin-bottom: 10px;
+    }
+    .color {
+      background-color: orange;
+      color: white;
     }
   }
 }
@@ -587,10 +595,14 @@ table tr:nth-child(even) {
         }
       }
     }
-    .btn-primary {
+    .btn-warning {
       position: relative;
       left: 82%;
       margin: 5px 0 10px 0;
+    }
+    .color {
+      background-color: orange;
+      color: white;
     }
   }
   table tr:nth-child(even) {
@@ -640,6 +652,10 @@ table tr:nth-child(even) {
     }
     .content_show {
       display:block;
+      p {
+        text-align: center;
+        margin-bottom: 0;
+      }
       .content {
         width: 100%;
         .iframe_wrap {
