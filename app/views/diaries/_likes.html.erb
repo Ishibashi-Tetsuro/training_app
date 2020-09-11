@@ -1,0 +1,27 @@
+<div class="diary_like">
+  <% if current_user.already_liked?(@diary) %>
+    <%= link_to diary_like_path(@diary, @like), method: :delete, class: "like-button", remote: true do %>
+      <i class="fa fa-heart heart_red" aria-hidden="true"></i>
+      <span><%= @diary.likes.count %></span>
+    <% end %>
+  <% else %>
+    <%= link_to diary_likes_path(@diary), method: :post, class: "like-button", remote: true do %>
+      <i class="fa fa-heart heart_gray" aria-hidden="true"></i>
+      <span><%= @diary.likes.count %></span>
+    <% end %>
+  <% end %>
+</div>
+<div class="diary-like-users">
+  <% @diary.liked_users.each do |user| %>
+    <div class="diary-like-user">
+      <%= link_to user_path(user), class: "link" do %>
+        <% if @diary.user.image? %>
+          <%= image_tag @diary.user.image_url(:thumb20), class: "user_icon_tag" %>
+        <% else %>
+          <%= image_tag 'user_image.png', :size =>'20x20', class: "user_icon_tag" %>
+        <% end %>
+      <% end %>
+      <%= user.name %>
+    </div>
+  <% end %>
+</div>
