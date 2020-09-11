@@ -15,6 +15,7 @@
 
 
 <%= javascript_include_tag 'diary/height.js' %>
+<%= javascript_include_tag 'style/diary_preview.js' %>
 
 <%= form_with model: @diary, local: true, method: :post do |f| %>
   <div class="user-content show-diary edit-diary">
@@ -27,18 +28,25 @@
                 <% if current_user.image? %>
                   <%= image_tag current_user.image_url(:thumb30), class: "user_icon_tag" %>
                 <% else %>
-                  <%= image_tag 'default.png', :size =>'30x30', class: "user_icon_tag" %>
+                  <%= image_tag 'user_image.png', :size =>'30x30', class: "user_icon_tag" %>
                 <% end %>
                 <span class="user_name">
-                  <%= "今日の記録を残そう" %>
+                  <%= "新しい日記を作成中" %>
                 </span>
               </div>
             </div>
           </div>
           <%= render 'layouts/error_messages', model: f.object %>
+
+          <div class="prev-contents">
+            <div class="prev-content">
+              <%= image_tag 'diary_image.png', class: "diary_image prev-image", onClick: "$('#upfile').click()" %>
+            </div>
+          </div>
+
           <div class="">
-            <%= f.label :image, {class: "content-label"} %>
-            <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
+            <%= f.label :image, {class: "content-label hidden_file"} %>
+            <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', id:'upfile', class:'hidden_file' %>
           </div>
           <div class="">
             <%= f.label :content, "今日の日記", {class: "content-label"}  %>
@@ -46,7 +54,7 @@
           </div>
           <div class="diary_info">
             <div class="diary-submit">
-              <%= f.submit "投稿する", class: "btn btn-primary" %>
+              <%= f.submit "投稿する", class: "btn btn-warning color" %>
             </div>
           </div>
         </div>

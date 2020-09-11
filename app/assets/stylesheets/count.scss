@@ -19,6 +19,15 @@
     margin-bottom: 30px;
   }
 }
+.diary-submit {
+  .color {
+    background-color: orange;
+    color: white;
+  }
+  .color:hover {
+    color: white;
+  }
+}
 
 @media screen and (max-width: 480px) {
   .character-show {
