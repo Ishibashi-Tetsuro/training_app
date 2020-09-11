@@ -35,11 +35,7 @@
           <% end %>
           <div class="diary_info">
             <div class="like-user">
-              <%# <i class="fa fa-heart heart_red" aria-hidden="true"></i>
-              <%= @diary.likes.count %>
-              <%# <div id="like_area" %>
                 <%= render partial:'diaries/likes'%>
-              <%# </div> %>
             </div>
             <div class="diary_day">
               <%= l @diary.created_at %>
