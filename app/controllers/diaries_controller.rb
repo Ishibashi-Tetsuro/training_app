@@ -8,7 +8,11 @@ class DiariesController < ApplicationController
 
   def show
     @diary = Diary.find(params[:id])
-    @like = Like.new
+    if like = Like.find_by(user_id: current_user.id, diary_id: params[:id])
+      @like = like
+    else
+      @like = Like.new
+    end
   end
 
   def new

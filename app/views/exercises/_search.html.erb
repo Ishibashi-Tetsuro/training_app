@@ -1,0 +1,28 @@
+<% if @exercises.empty? %>
+  <p>まだ登録されたエクササイズはありません</p>
+<% else %>
+  <% @exercises.each do |exercise| %>
+    <div class="content exercise_content">
+      <div class="exercise_info">
+        <span class="level">
+          <% exercise.level.times do %>
+            <i class="fas fa-dumbbell"></i>
+          <% end %>
+        </span>
+        <%= exercise.part %>
+      </div>
+      <div class="iframe_wrap">
+        <iframe width="400" height="225" src="https://www.youtube.com/embed/<%= exercise.url.last(11) %>"
+                frameborder="0" allow="accelerometer; autoplay; encrypted-media;
+                gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="exercise_edit">
+        <div class="exercise-edit-menu">
+        </div>
+        <div class="edit-menu">
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -81,7 +81,7 @@
   <%= image_tag 'バナー画像.png', class: "banner-image" %>
 </div>
 
-<%= search_form_for(@q, url: exercises_path, local: true) do |f| %>
+<%= search_form_for(@q, url: exercises_path, local: true, remote: true) do |f| %>
   <div class="search-exercise">
     <div class="user-content today-exercise-show new-exercise">
       <div class="content exercise_content">
@@ -117,34 +117,7 @@
       </div>
       <div class="content_hidden">
         <div class="content_show">
-          <% if @exercises.empty? %>
-            <p>まだ登録されたエクササイズはありません</p>
-          <% else %>
-            <% @exercises.each do |exercise| %>
-              <div class="content exercise_content">
-                <div class="exercise_info">
-                  <span class="level">
-                    <% exercise.level.times do %>
-                      <i class="fas fa-dumbbell"></i>
-                    <% end %>
-                  </span>
-                  <%= exercise.part %>
-                </div>
-                <div class="iframe_wrap">
-                  <iframe width="400" height="225" src="https://www.youtube.com/embed/<%= exercise.url.last(11) %>"
-                          frameborder="0" allow="accelerometer; autoplay; encrypted-media;
-                          gyroscope; picture-in-picture" allowfullscreen>
-                  </iframe>
-                </div>
-                <div class="exercise_edit">
-                  <div class="exercise-edit-menu">
-                  </div>
-                  <div class="edit-menu">
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
+          <%= render partial:'exercises/search' %>
         </div>
       </div>
     </div>
