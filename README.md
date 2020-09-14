@@ -1,5 +1,5 @@
 # Homegym
-![ヘッダー画像](https://imgur.com/a/U7jx3xj "ヘッダー画像")
+![ヘッダー画像](https://imgur.com/a/U7jx3xj.jpg "ヘッダー画像")
 ## 概要
 「自宅でもジムと同様の継続体験を」
 自宅でのトレーニングを継続させることが苦手な人をサポートするサービスです。
@@ -65,7 +65,7 @@ URL
 - 設計書
 	- アプリケーション詳細設定：https://www.icloud.com/numbers/0MUDr2Jb7IqNjydIzylYOACsg
 	- テーブル定義書：https://www.icloud.com/numbers/0nfYRItc2tWXCYZR2jlyc7jDw
-	- ER図：https://drive.google.com/file/d/1sncP0fHAl0r4UybR3iU1nNUXEbx8t7nz/view?usp=sharing
+	- ER図：https://drive.google.com/file/d/1weo7s89_wd_HwcQDEkRfIAfmTG6vPj7e/view?usp=sharing
 - 機能一覧
 	- https://docs.google.com/spreadsheets/d/1IJ4RoAs_-xBsC-Z0b_gmG4WTZG94Oju5-hKZHIRKyz4/edit#gid=0
 
