@@ -1,24 +1,73 @@
-# README
+# Homegym
+![ヘッダー画像](https://imgur.com/a/U7jx3xj "ヘッダー画像")
+## 概要
+「自宅でもジムと同様の継続体験を」
+自宅でのトレーニングを継続させることが苦手な人をサポートするサービスです。
+## URL
+http://
+【テストユーザーでログイン（スマートフォンの場合はハンバーガーメニューをタップ）】ボタンからログインすると各種機能をお試しいただけます。もちろん新規登録で初期状態を確認することも可能です。
+### 制作の背景
+「私、家だとトレーニング続かなくってさぁ、ほんとダメだよね・・・笑」
+妻がヨガインストラクターなのですが、コロナ禍でこの発言が会員さんからかなり増えたみたいです。この話を聞いた時に私は、
+「せっかく家で自主的にトレーニングをやっているのに自己否定に繋がってしまうなんて・・・。もっとワクワクした気持ちで自宅トレーニングを続けて自分を好きになってほしい！」
+と思いこのテーマを選びました。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+自宅だとトレーニングを思うように継続できなくて自分を否定してしまう人が、自宅でもモチベーションを保ってトレーニングが継続出来るようになり、「私でも続けられた！」と自己肯定感が高まることを目指しています。
+### ターゲットユーザ
+* 20代〜30代女性
+* コロナを期に自宅トレーニングを始めた人
+* なにをやっても継続させることが苦手な人
+### 主な利用シーン
+自宅でトレーニングを行う時
+1. スケジュールとエクササイズを事前に登録
+2. トレーニング開始時は「今日トレ」を選択
+3. トレーニング終了後「トレーニング完了」ボタンを押すとキャラクターが成長
+4. 毎日継続することでキャラクターがどんどん成長する
+### 機能一覧
+* エクササイズ登録
+  YouTubeのトレーニング動画をHomeGymに登録が
+* スケジュール登録
+  仕事の予定や体調、鍛えたい部位を日単位で予め登録
+* 今日トレ
+  スケジュール登録内容によりその日のエクササイズが自動表示
+* キャラクター成長機能
+  トレーニングをこなした日数により自分のパートナーである犬のキャラクターが成長
+  マイページより確認が可能（全６段階に成長）
+* 日記投稿
+* いいね
+* エクササイズ検索
+* レスポンシブデザイン（PC/スマートフォン）
 
-Things you may want to cover:
+詳細は下記よりご確認ください。
+URL
+## 環境・使用技術
+- フロントエンド
+	- Bootstrap 4.5.0
+	- SCSS
+  - JavaScript、jQuery、Ajax
+- バックエンド
+  - Ruby 2.6.5
+	- Rails 6.0.3
+- 開発環境
+  - MacOS
+  - VScode
+  - GitHub
+- 本番環境
+	- MySQL2
+	- AWS (EC2、RDS for MySQL)
+	- Nginx / unicorn
+- テスト
+* Rspec（単体/結合）計〇〇以上
 
-* Ruby version
+- 構成図
+![image](https://user-images.githubusercontent.com/62997834/93009715-37167a00-f5bf-11ea-9a0b-3b69a42fbc0d.png)
+## 設計
+- 設計書
+	- アプリケーション詳細設定：https://www.icloud.com/numbers/0MUDr2Jb7IqNjydIzylYOACsg
+	- テーブル定義書：https://www.icloud.com/numbers/0nfYRItc2tWXCYZR2jlyc7jDw
+	- ER図：https://drive.google.com/file/d/1sncP0fHAl0r4UybR3iU1nNUXEbx8t7nz/view?usp=sharing
+- 機能一覧
+	- https://docs.google.com/spreadsheets/d/1IJ4RoAs_-xBsC-Z0b_gmG4WTZG94Oju5-hKZHIRKyz4/edit#gid=0
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## About me
+新卒で３年間注文住宅請負会社に勤めていました。2020年6月よりRuby on Railsを中心に勉強中です。
