@@ -1,11 +1,14 @@
 # Homegym
 ![ヘッダー画像](https://imgur.com/l5uDOC0.jpg "ヘッダー画像")
+
 ## 概要
 「自宅でもジムと同様の継続体験を」
 自宅でのトレーニングを継続させることが苦手な人をサポートするサービスです。
+
 ## URL
-http://
+http://52.198.50.55/
 【テストユーザーでログイン（スマートフォンの場合はハンバーガーメニューをタップ）】ボタンからログインすると各種機能をお試しいただけます。もちろん新規登録で初期状態を確認することも可能です。
+
 ### 制作の背景
 「私、家だとトレーニング続かなくってさぁ、ほんとダメだよね・・・笑」
 妻がヨガインストラクターなのですが、コロナ禍でこの発言が会員さんからかなり増えたみたいです。この話を聞いた時に私は、
@@ -13,16 +16,19 @@ http://
 と思いこのテーマを選びました。
 
 自宅だとトレーニングを思うように継続できなくて自分を否定してしまう人が、自宅でもモチベーションを保ってトレーニングが継続出来るようになり、「私でも続けられた！」と自己肯定感が高まることを目指しています。
+
 ### ターゲットユーザ
 * 20代〜30代女性
 * コロナを期に自宅トレーニングを始めた人
 * なにをやっても継続させることが苦手な人
+
 ### 主な利用シーン
 自宅でトレーニングを行う時
 1. スケジュールとエクササイズを事前に登録
 2. トレーニング開始時は「今日トレ」を選択
 3. トレーニング終了後「トレーニング完了」ボタンを押すとキャラクターが成長
 4. 毎日継続することでキャラクターがどんどん成長する
+
 ### 機能一覧
 * エクササイズ登録
   YouTubeのトレーニング動画をHomeGymに登録が
@@ -38,8 +44,6 @@ http://
 * エクササイズ検索
 * レスポンシブデザイン（PC/スマートフォン）
 
-詳細は下記よりご確認ください。
-URL
 ## 環境・使用技術
 - フロントエンド
 	- Bootstrap 4.5.0
@@ -61,13 +65,11 @@ URL
 
 - 構成図
 ![インフラ構造図](https://imgur.com/wqnT4rG.png "インフラ構造図")
+
 ## 設計
 - 設計書
-	- アプリケーション詳細設定：https://www.icloud.com/numbers/0MUDr2Jb7IqNjydIzylYOACsg
-	- テーブル定義書：https://www.icloud.com/numbers/0nfYRItc2tWXCYZR2jlyc7jDw
+	- ルーティング詳細設定：https://docs.google.com/spreadsheets/d/1yqVnTNmp-RIV6sTUPXU2bvMgGVqujOMoONSAeEb0QNk/edit?usp=sharing
 	- ER図：https://drive.google.com/file/d/1weo7s89_wd_HwcQDEkRfIAfmTG6vPj7e/view?usp=sharing
-- 機能一覧
-	- https://docs.google.com/spreadsheets/d/1IJ4RoAs_-xBsC-Z0b_gmG4WTZG94Oju5-hKZHIRKyz4/edit#gid=0
 
 ## About me
 新卒で３年間注文住宅請負会社に勤めていました。2020年6月よりRuby on Railsを中心に勉強中です。
