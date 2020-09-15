@@ -60,7 +60,7 @@ URL
 * Rspec（単体/結合）計〇〇以上
 
 - 構成図
-![インフラ構造図](https://imgur.com/l5uDOC0.jpg "インフラ構造図")
+![インフラ構造図](https://imgur.com/wqnT4rG.png "インフラ構造図")
 ## 設計
 - 設計書
 	- アプリケーション詳細設定：https://www.icloud.com/numbers/0MUDr2Jb7IqNjydIzylYOACsg
