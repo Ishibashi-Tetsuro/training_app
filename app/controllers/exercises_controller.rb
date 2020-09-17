@@ -5,7 +5,7 @@ class ExercisesController < ApplicationController
   def index
     @diaries = Diary.all.limit(4).order(id: "DESC")
     @q = Exercise.ransack(params[:q])
-    @exercises = @q.result(distinct: true).order("RAND()").limit(10)
+    @exercises = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
   def show
