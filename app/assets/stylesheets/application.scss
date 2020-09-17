@@ -107,6 +107,27 @@
 .sp-nav {
   display: none;
 }
+.pagination {
+  justify-content: center;
+}
+.pagination>li>a {
+  border: none;
+  color:#433f3f;
+}
+.active .page-link .current {
+  background-color: orange;
+}
+.pagination>.active>a {
+  border-radius: 15px;
+  background-color: orange;
+  color: #433f3f;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;
+  background-color: orange;
+  color: white;
+}
 
 @media screen and (max-width: 750px) {
   .fade-layer {
