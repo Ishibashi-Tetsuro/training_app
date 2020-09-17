@@ -3,6 +3,8 @@ class CountsController < ApplicationController
 
   def show
     @count = Count.find_by(user_id: current_user.id)
+
+    #レベルアップの条件式
     if @count.day >= 15
       @level = 6
       @level_up_day = 0

@@ -1,24 +1,76 @@
-# README
+# Homegym
+![ヘッダー画像](https://imgur.com/l5uDOC0.jpg "ヘッダー画像")
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
+「自宅でもジムと同様の継続体験を」
+自宅でのトレーニングを継続させることが苦手な人をサポートするサービスです。
 
-Things you may want to cover:
+## URL
+http://52.198.50.55/
+【テストユーザーでログイン（スマートフォンの場合はハンバーガーメニューをタップ）】ボタンからログインすると各種機能をお試しいただけます。
+もちろん新規登録で初期状態を確認することも可能です。
 
-* Ruby version
+### 制作の背景
+「私、家だとトレーニング続かなくってさぁ、ほんとダメだよね・・・笑」
+妻がヨガインストラクターなのですが、コロナ禍でこの発言が会員さんからかなり増えたみたいです。この話を聞いた時に私は、
+「せっかく家で自主的にトレーニングをやっているのに自己否定に繋がってしまうなんて・・・。もっとワクワクした気持ちで自宅トレーニングを続けて自分を好きになってほしい！」
+と思いこのテーマを選びました。
 
-* System dependencies
+自宅だとトレーニングを思うように継続できなくて自分を否定してしまう人が、自宅でもモチベーションを保ってトレーニングが継続出来るようになり、「私でも続けられた！」と自己肯定感が高まることを目指しています。
 
-* Configuration
+### ターゲットユーザ
+* 20代〜30代女性
+* コロナを期に自宅トレーニングを始めた人
+* なにをやっても継続させることが苦手な人
 
-* Database creation
+### 主な利用シーン
+自宅でトレーニングを行う時
+1. スケジュールとエクササイズを事前に登録
+2. トレーニング開始時は「今日トレ」を選択
+3. トレーニング終了後「トレーニング完了」ボタンを押すとキャラクターが成長
+4. 毎日継続することでキャラクターがどんどん成長する
 
-* Database initialization
+### 機能一覧
+* エクササイズ登録
+  YouTubeのトレーニング動画をHomeGymに登録が
+* スケジュール登録
+  仕事の予定や体調、鍛えたい部位を日単位で予め登録
+* 今日トレ
+  スケジュール登録内容によりその日のエクササイズが自動表示
+* キャラクター成長機能
+  トレーニングをこなした日数により自分のパートナーである犬のキャラクターが成長
+  マイページより確認が可能（全６段階に成長）
+* 日記投稿
+* いいね
+* エクササイズ検索
+* レスポンシブデザイン（PC/スマートフォン）
 
-* How to run the test suite
+## 環境・使用技術
+- フロントエンド
+	- Bootstrap 4.5.0
+	- SCSS
+  - JavaScript、jQuery、Ajax
+- バックエンド
+  - Ruby 2.6.5
+	- Rails 6.0.3
+- 開発環境
+  - MacOS
+  - VScode
+  - GitHub
+- 本番環境
+	- MySQL2
+	- AWS (VPC、EC2、RDS)
+	- Nginx / Unicorn
+- テスト
+* Rspec（単体/結合）計〇〇以上
 
-* Services (job queues, cache servers, search engines, etc.)
+- 構成図
+![インフラ構造図](https://imgur.com/wqnT4rG.png "インフラ構造図")
 
-* Deployment instructions
+## 設計
+- 設計書
+	- ルーティング詳細設定：https://docs.google.com/spreadsheets/d/1yqVnTNmp-RIV6sTUPXU2bvMgGVqujOMoONSAeEb0QNk/edit?usp=sharing
+	- ER図：https://drive.google.com/file/d/1weo7s89_wd_HwcQDEkRfIAfmTG6vPj7e/view?usp=sharing
 
-* ...
+## About me
+新卒で３年間注文住宅請負会社に勤めていました。2020年6月よりRuby on Railsを中心に勉強中です。
