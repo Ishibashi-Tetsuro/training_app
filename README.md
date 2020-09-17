@@ -74,3 +74,6 @@ http://52.198.50.55/
 
 ## About me
 新卒で３年間注文住宅請負会社に勤めていました。2020年6月よりRuby on Railsを中心に勉強中です。
+詳しいプロフィールはWantedlyにまとめてあります。下記URLよりご覧いただけます。
+※Wantedlyとは250万人以上が利用する国内最大のビジネスSNSです。
+https://www.wantedly.com/users/137861104
