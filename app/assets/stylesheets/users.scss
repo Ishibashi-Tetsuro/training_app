@@ -581,11 +581,11 @@ table tr:nth-child(even) {
     }
   }
 }
-.schedule_show {
+.schedule_show, .user-content {
   .alert {
     margin-bottom: 0;
   }
-  .error_explanation {
+  .error_explanation{
     margin-bottom: 0;
     padding-left: 5px;
     font-size: 15px;
