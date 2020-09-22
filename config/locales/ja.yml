@@ -40,6 +40,8 @@ ja:
       user:
         name: ユーザー名
         image: アイコン画像
+      exercise:
+        url: URL
     errors:
       models:
         user:
@@ -56,6 +58,9 @@ ja:
             content:
               format: "%{message}"
               blank: "日記が空欄です"
+        exercise:
+          format: "%{message}"
+          blank: "%{attribute}を入力してください"
       messages:
         max_size_error: "は5MB以下にする必要があります"
 

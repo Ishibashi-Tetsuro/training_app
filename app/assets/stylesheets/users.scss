@@ -581,6 +581,26 @@ table tr:nth-child(even) {
     }
   }
 }
+.schedule_show, .user-content {
+  .alert {
+    margin-bottom: 0;
+  }
+  .error_explanation{
+    margin-bottom: 0;
+    padding-left: 5px;
+    font-size: 15px;
+    li {
+      list-style: none;
+      color: #D93025;
+    }
+    li:before {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      content: "\f06a";
+      color: #D93025;
+    }
+  }
+}
 .schedule-new {
   .schedule_show {
     border: 1px solid lightgrey;
