@@ -62,7 +62,7 @@ http://52.198.50.55/
 	- AWS (VPC、EC2、RDS)
 	- Nginx / unicorn
 - テスト
-* Rspec（単体/結合）計〇〇以上
+* Rspec
 
 - 構成図
 ![インフラ構造図](https://imgur.com/wqnT4rG.png "インフラ構造図")
